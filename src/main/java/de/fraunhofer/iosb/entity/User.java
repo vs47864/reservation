@@ -20,8 +20,6 @@ public class User
 
     public String token;
 
-    public String cardId;
-
     @NotNull
     public String name;
 
@@ -47,12 +45,11 @@ public class User
         this.number = number;
     }
 
-    public User(String username, String password, String token, String cardId, String name, String lastname,
+    public User(String username, String password, String token, String name, String lastname,
                 String email, String number) {
         this.username = username;
         this.password = password;
         this.token = token;
-        this.cardId = cardId;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
@@ -84,14 +81,6 @@ public class User
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public String getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(String cardId) {
-        this.cardId = cardId;
     }
 
     public String getName() {

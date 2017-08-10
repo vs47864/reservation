@@ -1,20 +1,17 @@
 package de.fraunhofer.iosb.rest;
 
 
-import de.fraunhofer.iosb.representation.NearbyRequest;
-import de.fraunhofer.iosb.representation.RoomRepresentation;
-import de.fraunhofer.iosb.representation.TokenRepresentation;
-import de.fraunhofer.iosb.representation.UserCredentialRepresentation;
+import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.LoginService;
+import de.fraunhofer.iosb.services.RoomService;
 import de.fraunhofer.iosb.seucrity.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/mobile")
@@ -22,12 +19,16 @@ public class MobileController
 {
     private static final Logger LOG = LoggerFactory.getLogger(MobileController.class);
 
+
     private LoginService loginService;
 
+    private RoomService roomService;
+
     @Autowired
-    public MobileController(LoginService loginService)
+    public MobileController(LoginService loginService, RoomService roomService)
     {
         this.loginService = loginService;
+        this.roomService = roomService;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -51,9 +52,14 @@ public class MobileController
     }
 
     @RequestMapping(value = "/nearby", method = RequestMethod.POST)
-    public RoomRepresentation nearbyRooms(@RequestBody NearbyRequest nearbyRequest)
+    public List<RoomRepresentation> nearbyRooms(@RequestBody NearbyRequest nearbyRequest)
     {
+        return roomService.getListOfRooms(nearbyRequest);
+    }
 
+    @RequestMapping(value = "/room/{id}", method = RequestMethod.GET)
+    public RoomDetailsRepresentation roomDetails(@PathVariable(value="id") String id)
+    {
         return null;
     }
 }

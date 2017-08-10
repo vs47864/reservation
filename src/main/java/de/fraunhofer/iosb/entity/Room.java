@@ -13,12 +13,13 @@ public class Room {
     public String toString() {
         return roomID;
     }
+
     @Id
     public String roomID;
 
-    public Boolean occupied;
+    public Boolean occupied = false;
 
-    public String url;
+    public String name;
 
     public String token;
 
@@ -27,10 +28,10 @@ public class Room {
 
     public Room(){}
 
-    public Room(String roomID, String url, String token)
+    public Room(String roomID, String name, String token)
     {
         this.roomID = roomID;
-        this.url = url;
+        this.name = name;
         this.token = token;
     }
 
@@ -40,11 +41,11 @@ public class Room {
     public void setRoomID(String roomID) {
         this.roomID = roomID;
     }
-    public String getUrl() {
-        return url;
+    public String getName() {
+        return name;
     }
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
     public String getToken() {
         return token;

@@ -30,10 +30,11 @@ public class Initialization  implements CommandLineRunner
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        Room r18 = new Room("C8-18", "http://10.19.4.107:8889/api", "token");
+        Room r18 = new Room("BEACON 39:91:DB", "HIWI 1", "token");
+        r18.setOccupied(true);
         repoRoom.save(r18);
 
-        Room r19 = new Room("C8-19", "http://localhost:8080/rooms/1", "token");
+        Room r19 = new Room("BEACON 39:8C:22", "HIWI 2", "token");
         repoRoom.save(r19);
 
         Room r22 = new Room("C8-22", "http://localhost:8080/rooms/2", "neki token");

@@ -21,15 +21,14 @@ public class TokenUtils
         if(authToken == null)
             return null;
 
-        String token = authToken.substring(7);
-        User user = service.getUserFromToken(token);
+        User user = service.getUserFromToken(authToken);
         if(user == null)
             return null;
 
         return user.getUsername();
     }
 
-    public boolean validateToken(String authToken, UserDetails userDetails) {
+    public boolean validateToken(String authToken) {
         // FEATURE za sada token nema valjanost to treba napraviti u budućnosti
         return true;
     }

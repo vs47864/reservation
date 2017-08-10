@@ -1,5 +1,6 @@
 package de.fraunhofer.iosb.seucrity;
 
+import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.services.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,10 +39,10 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
         if (username != null) { // && SecurityContextHolder.getContext().getAuthentication() == null) {
             LOG.debug("found user by provided token - username: {}", username);
-            UserDetails userDetails = loginService.loadUserByUsername(username);
-            if (tokenUtils.validateToken(authToken, userDetails)) {
+            User user = loginService.getUserFromToken(authToken);
+            if (tokenUtils.validateToken(authToken)) {
                 LOG.debug("user '{}' has valid token", username);
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, null);
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } else {
