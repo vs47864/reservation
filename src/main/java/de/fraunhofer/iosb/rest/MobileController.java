@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -57,8 +58,8 @@ public class MobileController
         return roomService.getListOfRooms(nearbyRequest);
     }
 
-    @RequestMapping(value = "/room/{id}", method = RequestMethod.GET)
-    public RoomDetailsRepresentation roomDetails(@PathVariable(value="id") String id)
+    @RequestMapping(value = "/room/{id}", method = RequestMethod.POST)
+    public RoomDetailsRepresentation roomDetails(@PathVariable(value="id") String id, Principal principal)
     {
         return null;
     }
