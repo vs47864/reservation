@@ -9,24 +9,15 @@ import java.util.Date;
 public class Term
 {
     @EmbeddedId
-    TermId termID;
-
-    private Date from;
-
-    private Date till;
+    private TermId termID;
 
     @ManyToOne(optional=false)
     @MapsId("roomId")
+    @JoinColumn(name = "RoomID")
     private Room room;
-
-    @ManyToOne(optional=false)
-    @MapsId("userName")
-    private User user;
 
     public Term(Date from, Date till) {
         termID = new TermId();
-        this.from = from;
-        this.till = till;
     }
 
     public TermId getTermID() {
@@ -43,29 +34,5 @@ public class Term
 
     public void setRoom(Room room) {
         this.room = room;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getFrom() {
-        return from;
-    }
-
-    public void setFrom(Date from) {
-        this.from = from;
-    }
-
-    public Date getTill() {
-        return till;
-    }
-
-    public void setTill(Date till) {
-        this.till = till;
     }
 }

@@ -6,6 +6,7 @@ import de.fraunhofer.iosb.services.LoginService;
 import de.fraunhofer.iosb.services.RoomService;
 import de.fraunhofer.iosb.services.UserService;
 import de.fraunhofer.iosb.seucrity.UnauthorizedException;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -63,9 +65,16 @@ public class MobileController
     }
 
     @RequestMapping(value = "/room/{id}", method = RequestMethod.POST)
-    public RoomDetailsRepresentation roomDetails(@PathVariable(value="id") String id, Principal principal)
+    public ReservationResponse roomDetails(@PathVariable(value="id") String id,
+                                                 Principal principal, @RequestBody ReserveRequest reserveRequest)
     {
-        return null;
+        ReservationResponse reservationResponse = new ReservationResponse();
+        Pair<Date, Date> dates = roomService.parseDates(reserveRequest.getStartTime(), reserveRequest.getEndTime(), reserveRequest.getDate());
+        if(roomService.checkIfRoomIsAvailable(id, dates.getKey(), dates.getValue()))
+        {
+            reservationResponse.setSuccess(true);
+        }
+        return reservationResponse;
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)

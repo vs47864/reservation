@@ -2,15 +2,25 @@ package de.fraunhofer.iosb.entity.key;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Date;
 
 @Embeddable
 public class TermId implements Serializable {
 
-    private String userName;
+    private Date startDate;
+
+    private Date endDate;
+
     private String roomId;
 
     public TermId() {
         super();
+    }
+
+    public TermId(Date startDate, Date endDate, String roomId) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.roomId = roomId;
     }
 
     public String getRoomId() {
@@ -21,11 +31,19 @@ public class TermId implements Serializable {
         this.roomId = roomId;
     }
 
-    public String getUserName() {
-        return userName;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }
