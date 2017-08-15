@@ -4,6 +4,7 @@ package de.fraunhofer.iosb.rest;
 import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.LoginService;
 import de.fraunhofer.iosb.services.RoomService;
+import de.fraunhofer.iosb.services.UserService;
 import de.fraunhofer.iosb.seucrity.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +26,12 @@ public class MobileController
 
     private RoomService roomService;
 
+    private UserService userService;
+
     @Autowired
-    public MobileController(LoginService loginService, RoomService roomService)
+    public MobileController(LoginService loginService, RoomService roomService, UserService userService)
     {
+        this.userService = userService;
         this.loginService = loginService;
         this.roomService = roomService;
     }
@@ -62,5 +66,11 @@ public class MobileController
     public RoomDetailsRepresentation roomDetails(@PathVariable(value="id") String id, Principal principal)
     {
         return null;
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public List<UserRepresentation> users()
+    {
+        return userService.getAllUsersInRepresentation();
     }
 }
