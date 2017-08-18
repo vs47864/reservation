@@ -12,17 +12,28 @@ public class RoomRepresentation
 
     private boolean occupied;
 
+    private boolean favorite = false;
+
     private Date from;
 
     private Date untill;
 
-    public RoomRepresentation(String roomID, String name, boolean occupied, Date from, Date untill)
+    public RoomRepresentation(String roomID, String name, boolean occupied, Date from, Date untill, boolean favorite)
     {
         this.roomID = roomID;
         this.name = name;
         this.occupied = occupied;
         this.from = from;
         this.untill = untill;
+        this.favorite = favorite;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public String getRoomID() {

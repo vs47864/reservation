@@ -2,6 +2,10 @@ package de.fraunhofer.iosb.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Entity
@@ -36,6 +40,12 @@ public class User
     @JoinColumn(name="RoomID",referencedColumnName="roomID")
     private Room curentRoom;
 
+    @ManyToMany
+    private List<Term> terms = new ArrayList<>();
+
+    @ManyToMany
+    private Map<String, Room> favorites = new HashMap<>();
+
     public User(String username, String password, String name, String lastname, String email, String number) {
         this.username = username;
         this.password = password;
@@ -57,6 +67,14 @@ public class User
     }
 
     public User(){
+    }
+
+    public List<Term> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(List<Term> terms) {
+        this.terms = terms;
     }
 
     public String getUsername() {
@@ -121,5 +139,13 @@ public class User
 
     public void setCurentRoom(Room curentRoom) {
         this.curentRoom = curentRoom;
+    }
+
+    public Map<String, Room> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Map<String, Room> favorites) {
+        this.favorites = favorites;
     }
 }

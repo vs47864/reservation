@@ -26,6 +26,9 @@ public class Room {
     @OneToMany(mappedBy="curentRoom")
     private final List<User> curentUsers = new ArrayList<User>();
 
+    @OneToMany(mappedBy="room")
+    private final List<Term> terms = new ArrayList<Term>();
+
     public Room(){}
 
     public Room(String roomID, String name, String token)
@@ -58,5 +61,11 @@ public class Room {
     }
     public void setOccupied(Boolean occupied) {
         this.occupied = occupied;
+    }
+    public List<User> getCurentUsers() {
+        return curentUsers;
+    }
+    public List<Term> getTerms() {
+        return terms;
     }
 }

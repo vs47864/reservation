@@ -1,9 +1,11 @@
 package de.fraunhofer.iosb.rest;
 
-
+import de.fraunhofer.iosb.entity.Room;
+import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.LoginService;
 import de.fraunhofer.iosb.services.RoomService;
+import de.fraunhofer.iosb.services.TermService;
 import de.fraunhofer.iosb.services.UserService;
 import de.fraunhofer.iosb.seucrity.UnauthorizedException;
 import javafx.util.Pair;
@@ -30,12 +32,15 @@ public class MobileController
 
     private UserService userService;
 
+    private TermService termService;
+
     @Autowired
-    public MobileController(LoginService loginService, RoomService roomService, UserService userService)
+    public MobileController(LoginService loginService, RoomService roomService, UserService userService, TermService termService)
     {
         this.userService = userService;
         this.loginService = loginService;
         this.roomService = roomService;
+        this.termService = termService;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -59,9 +64,10 @@ public class MobileController
     }
 
     @RequestMapping(value = "/nearby", method = RequestMethod.POST)
-    public List<RoomRepresentation> nearbyRooms(@RequestBody NearbyRequest nearbyRequest)
+    public List<RoomRepresentation> nearbyRooms(@RequestBody NearbyRequest nearbyRequest, Principal principal)
     {
-        return roomService.getListOfRooms(nearbyRequest);
+        User user = userService.findUser(principal.getName());
+        return roomService.getListOfRooms(nearbyRequest, user);
     }
 
     @RequestMapping(value = "/room/{id}", method = RequestMethod.POST)
@@ -69,10 +75,17 @@ public class MobileController
                                                  Principal principal, @RequestBody ReserveRequest reserveRequest)
     {
         ReservationResponse reservationResponse = new ReservationResponse();
-        Pair<Date, Date> dates = roomService.parseDates(reserveRequest.getStartTime(), reserveRequest.getEndTime(), reserveRequest.getDate());
+        Pair<Date, Date> dates = roomService.parseDates(reserveRequest.getStartTime(), reserveRequest.getEndTime(),
+                                                        reserveRequest.getDate());
         if(roomService.checkIfRoomIsAvailable(id, dates.getKey(), dates.getValue()))
         {
+            List<User> users = userService.getUsersByIds(reserveRequest.getUsers());
+            User user = userService.findUser(principal.getName());
+            Room room = roomService.findRoom(id);
+            termService.addTerm(user, users, room, dates.getKey(), dates.getValue());
             reservationResponse.setSuccess(true);
+            users.add(user);
+            userService.scheduleCurrentRoom(users, room, dates.getKey(), dates.getValue());
         }
         return reservationResponse;
     }
@@ -81,5 +94,14 @@ public class MobileController
     public List<UserRepresentation> users()
     {
         return userService.getAllUsersInRepresentation();
+    }
+
+    @RequestMapping(value = "/room/favorite/{id}", method = RequestMethod.GET)
+    public ReservationResponse makeFavorite(@PathVariable(value="id") String id, Principal principal)
+    {
+        User user = userService.findUser(principal.getName());
+        ReservationResponse reservationResponse = new ReservationResponse();
+        userService.makeFavorite(id, user);
+        return reservationResponse;
     }
 }
