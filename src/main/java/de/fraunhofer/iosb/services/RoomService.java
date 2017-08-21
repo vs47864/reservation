@@ -1,6 +1,7 @@
 package de.fraunhofer.iosb.services;
 
 import de.fraunhofer.iosb.entity.Room;
+import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.representation.NearbyRequest;
 import de.fraunhofer.iosb.representation.RoomRepresentation;
@@ -24,4 +25,6 @@ public interface RoomService
     void makeRoomUnocupied(String id);
 
     void scheduleOccupation(String id, Date startTime, Date endTime);
+
+    Term getNextTerm(String id);
 }

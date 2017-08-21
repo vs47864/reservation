@@ -32,7 +32,16 @@ public class RommServiceImplementation implements RoomService
         {
             boolean favorite = user.getFavorites().containsKey(id);
             Room room = roomRepository.findByRoomID(id);
-            RoomRepresentation representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), new Date(), favorite);
+            Term term = getNextTerm(id);
+            RoomRepresentation representation;
+            if(term != null)
+            {
+                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
+            }
+            else
+            {
+                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), new Date(), favorite);
+            }
             result.add(representation);
         }
         return result;
@@ -114,6 +123,18 @@ public class RommServiceImplementation implements RoomService
                 makeRoomUnocupied(id);
             }
         }, endTime);
+    }
+
+    @Override
+    public Term getNextTerm(String id)
+    {
+        Room room = roomRepository.findByRoomID(id);
+        List<Term> terms = termRepository.findByRoomAndTermID_StartDateGreaterThanOrderByTermID(room, new Date());
+        if(!terms.isEmpty())
+        {
+            return terms.get(0);
+        }
+        else return null;
     }
 
 }

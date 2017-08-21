@@ -4,6 +4,7 @@ import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.UserRepository;
+import de.fraunhofer.iosb.representation.RoomRepresentation;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 import de.fraunhofer.iosb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,5 +100,18 @@ public class UserServiceImplementation implements UserService
         }
         user.getFavorites().put(roomId, room);
         repo.save(user);
+    }
+
+    @Override
+    public List<RoomRepresentation> getFavoriteRoom(String username)
+    {
+        List<RoomRepresentation> result = new ArrayList<>();
+        User user = repo.findByUsername(username);
+        for (Room room : user.getFavorites().values())
+        {
+            RoomRepresentation representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), new Date(), true);
+            result.add(representation);
+        }
+        return result;
     }
 }

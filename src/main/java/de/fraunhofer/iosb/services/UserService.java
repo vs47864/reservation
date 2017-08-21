@@ -2,6 +2,7 @@ package de.fraunhofer.iosb.services;
 
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
+import de.fraunhofer.iosb.representation.RoomRepresentation;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 
 import java.util.Date;
@@ -22,4 +23,6 @@ public interface UserService
     void unSetCurrentRoom(List<User> users);
 
     void makeFavorite(String roomId, User user);
+
+    List<RoomRepresentation> getFavoriteRoom(String username);
 }

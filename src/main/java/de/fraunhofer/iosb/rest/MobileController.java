@@ -70,6 +70,13 @@ public class MobileController
         return roomService.getListOfRooms(nearbyRequest, user);
     }
 
+    @RequestMapping(value = "/favorites", method = RequestMethod.GET)
+    public List<RoomRepresentation> favoriteRooms(Principal principal)
+    {
+        userService.getFavoriteRoom(principal.getName());
+        return userService.getFavoriteRoom(principal.getName());
+    }
+
     @RequestMapping(value = "/room/{id}", method = RequestMethod.POST)
     public ReservationResponse roomDetails(@PathVariable(value="id") String id,
                                                  Principal principal, @RequestBody ReserveRequest reserveRequest)
