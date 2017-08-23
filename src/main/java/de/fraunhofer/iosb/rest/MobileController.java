@@ -73,8 +73,13 @@ public class MobileController
     @RequestMapping(value = "/favorites", method = RequestMethod.GET)
     public List<RoomRepresentation> favoriteRooms(Principal principal)
     {
-        userService.getFavoriteRoom(principal.getName());
         return userService.getFavoriteRoom(principal.getName());
+    }
+
+    @RequestMapping(value = "/favorites/terms", method = RequestMethod.GET)
+    public List<TermsResponse> favoriteRoomsTerms(Principal principal)
+    {
+        return termService.getFavoriteRoomTerms(principal.getName());
     }
 
     @RequestMapping(value = "/room/{id}", method = RequestMethod.POST)
@@ -89,7 +94,7 @@ public class MobileController
             List<User> users = userService.getUsersByIds(reserveRequest.getUsers());
             User user = userService.findUser(principal.getName());
             Room room = roomService.findRoom(id);
-            termService.addTerm(user, users, room, dates.getKey(), dates.getValue());
+            termService.addTerm(user, users, room, dates.getKey(), dates.getValue(), reserveRequest.getTitle());
             reservationResponse.setSuccess(true);
             users.add(user);
             userService.scheduleCurrentRoom(users, room, dates.getKey(), dates.getValue());

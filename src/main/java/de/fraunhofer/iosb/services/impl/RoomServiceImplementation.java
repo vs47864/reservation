@@ -16,8 +16,10 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class RommServiceImplementation implements RoomService
+public class RoomServiceImplementation implements RoomService
 {
+    private static final long HOUR = 3_600_000;
+
     @Autowired
     private RoomRepository roomRepository;
 
@@ -32,15 +34,29 @@ public class RommServiceImplementation implements RoomService
         {
             boolean favorite = user.getFavorites().containsKey(id);
             Room room = roomRepository.findByRoomID(id);
-            Term term = getNextTerm(id);
-            RoomRepresentation representation;
-            if(term != null)
+            Term term;
+            RoomRepresentation representation = null;
+            if(room.getOccupied())
             {
-                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
+                term = getCurentTerm(id);
+                if(term != null)
+                {
+                    representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
+                }
+            }else
+            {
+                term = getNextTerm(id);
+                if(term != null)
+                {
+                    representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
+                }
             }
-            else
+            if(term == null)
             {
-                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), new Date(), favorite);
+                Calendar date = Calendar.getInstance();
+                long t = date.getTimeInMillis();
+                Date houre = new Date(t + 8 * HOUR);
+                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), houre, favorite);
             }
             result.add(representation);
         }
@@ -129,12 +145,19 @@ public class RommServiceImplementation implements RoomService
     public Term getNextTerm(String id)
     {
         Room room = roomRepository.findByRoomID(id);
-        List<Term> terms = termRepository.findByRoomAndTermID_StartDateGreaterThanOrderByTermID(room, new Date());
+            List<Term> terms = termRepository.findByRoomAndTermID_StartDateGreaterThanOrderByTermID(room, new Date());
         if(!terms.isEmpty())
         {
             return terms.get(0);
         }
         else return null;
+    }
+
+    public Term getCurentTerm(String id)
+    {
+        Room room = roomRepository.findByRoomID(id);
+        Term term = termRepository.findByRoomAndTermID_StartDateLessThanEqualAndTermID_EndDateGreaterThanEqual(room, new Date(), new Date());
+        return term;
     }
 
 }

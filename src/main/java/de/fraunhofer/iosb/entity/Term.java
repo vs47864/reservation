@@ -12,6 +12,8 @@ public class Term
     @EmbeddedId
     private TermId termID;
 
+    private String title;
+
     @ManyToOne(optional=false)
     @MapsId("roomId")
     @JoinColumn(name = "RoomID")
@@ -25,8 +27,9 @@ public class Term
     @ManyToMany
     private List<User> users = new ArrayList<>();
 
-    public Term(TermId termID, Room room, User user, List<User> users) {
+    public Term(TermId termID, String title, Room room, User user, List<User> users) {
         this.termID = termID;
+        this.title = title;
         this.room = room;
         this.user = user;
         this.users = users;
@@ -49,5 +52,13 @@ public class Term
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
