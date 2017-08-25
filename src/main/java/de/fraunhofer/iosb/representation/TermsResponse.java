@@ -12,14 +12,17 @@ public class TermsResponse
 
     private String description;
 
+    private String roomId;
+
     public TermsResponse() {
     }
 
-    public TermsResponse(Date startDate, Date endDate, String location, String description) {
+    public TermsResponse(Date startDate, Date endDate, String location, String description, String roomId) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
         this.description = description;
+        this.roomId = roomId;
     }
 
     public Date getStartDate() {
@@ -52,5 +55,13 @@ public class TermsResponse
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 }

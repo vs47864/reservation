@@ -116,4 +116,10 @@ public class MobileController
         userService.makeFavorite(id, user);
         return reservationResponse;
     }
+
+    @RequestMapping(value = "/favorites/terms/", method = RequestMethod.POST)
+    public TermDetailsResponse termDetailsResponse(@RequestBody TermsResponse term)
+    {
+        return termService.getTerm(term);
+    }
 }

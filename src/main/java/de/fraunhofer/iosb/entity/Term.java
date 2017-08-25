@@ -61,4 +61,20 @@ public class Term
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }
