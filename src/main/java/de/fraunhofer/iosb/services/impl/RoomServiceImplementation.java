@@ -51,13 +51,16 @@ public class RoomServiceImplementation implements RoomService
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
                 }
             }
+
             if(term == null)
             {
+                //IF is aveliable and hasnt upcomming event than set free next 8 hours
                 Calendar date = Calendar.getInstance();
                 long t = date.getTimeInMillis();
-                Date houre = new Date(t + 8 * HOUR);
-                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), houre, favorite);
+                Date hour = new Date(t + 8 * HOUR);
+                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, hour, hour, favorite);
             }
+
             result.add(representation);
         }
         return result;

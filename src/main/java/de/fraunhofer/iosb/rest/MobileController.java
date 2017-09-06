@@ -103,9 +103,10 @@ public class MobileController
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public List<UserRepresentation> users()
+    public List<UserRepresentation> users(Principal principal)
     {
-        return userService.getAllUsersInRepresentation();
+        User user = userService.findUser(principal.getName());
+        return userService.getAllUsersInRepresentation(user);
     }
 
     @RequestMapping(value = "/room/favorite/{id}", method = RequestMethod.GET)
@@ -121,5 +122,12 @@ public class MobileController
     public TermDetailsResponse termDetailsResponse(@RequestBody TermsResponse term)
     {
         return termService.getTerm(term);
+    }
+
+    @RequestMapping(value = "/users/terms", method = RequestMethod.GET)
+    public List<TermsResponse> myTerms(Principal principal)
+    {
+        List<TermsResponse> termsResponses =  userService.getTerms(principal.getName());
+        return termsResponses;
     }
 }

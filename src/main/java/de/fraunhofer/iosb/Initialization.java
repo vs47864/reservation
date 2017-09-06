@@ -31,7 +31,6 @@ public class Initialization  implements CommandLineRunner
     @Transactional
     public void run(String... args) throws Exception {
         Room r18 = new Room("BEACON 39:91:DB", "HIWI 1", "token");
-        r18.setOccupied(true);
         repoRoom.save(r18);
 
         Room r19 = new Room("BEACON 39:8C:22", "HIWI 2", "token");

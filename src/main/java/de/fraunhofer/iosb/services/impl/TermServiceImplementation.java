@@ -32,6 +32,13 @@ public class TermServiceImplementation implements TermService
         TermId termId = new TermId(from, until, room.roomID);
         Term term = new Term(termId, title, room, user, users);
         termRepository.save(term);
+        user.getTerms().add(term);
+        userRepository.save(user);
+        for(User user1 : users)
+        {
+            user1.getTerms().add(term);
+            userRepository.save(user1);
+        }
     }
 
     @Override
@@ -43,7 +50,8 @@ public class TermServiceImplementation implements TermService
         {
             for(Term term : room.getTerms())
             {
-                TermsResponse termsResponse = new TermsResponse(term.getTermID().getStartDate(), term.getTermID().getEndDate(), room.getName(), term.getTitle(), room.getRoomID());
+                TermsResponse termsResponse = new TermsResponse(term.getTermID().getStartDate(),
+                        term.getTermID().getEndDate(), room.getName(), term.getTitle(), room.getRoomID());
                 terms.add(termsResponse);
             }
         }

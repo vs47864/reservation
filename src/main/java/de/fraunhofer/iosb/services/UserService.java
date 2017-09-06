@@ -3,6 +3,7 @@ package de.fraunhofer.iosb.services;
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.representation.RoomRepresentation;
+import de.fraunhofer.iosb.representation.TermsResponse;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface UserService
 {
-    List<UserRepresentation> getAllUsersInRepresentation();
+    List<UserRepresentation> getAllUsersInRepresentation(User user1);
 
     List<User> getUsersByIds(List<String> ids);
 
@@ -25,4 +26,6 @@ public interface UserService
     void makeFavorite(String roomId, User user);
 
     List<RoomRepresentation> getFavoriteRoom(String username);
+
+    List<TermsResponse> getTerms(String username);
 }

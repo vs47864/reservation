@@ -1,10 +1,12 @@
 package de.fraunhofer.iosb.services.impl;
 
 import de.fraunhofer.iosb.entity.Room;
+import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.UserRepository;
 import de.fraunhofer.iosb.representation.RoomRepresentation;
+import de.fraunhofer.iosb.representation.TermsResponse;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 import de.fraunhofer.iosb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,18 @@ public class UserServiceImplementation implements UserService
     private RoomRepository roomRepository;
 
     @Override
-    public List<UserRepresentation> getAllUsersInRepresentation()
+    public List<UserRepresentation> getAllUsersInRepresentation(User user1)
     {
         List<UserRepresentation> userRepresentations = new ArrayList<>();
 
         for (User user : repo.findAll())
         {
-            UserRepresentation userRepresentation = new UserRepresentation(
-                    user.getLastname()+" "+user.getName(), user.getUsername());
-            userRepresentations.add(userRepresentation);
+            if(!user.equals(user1))
+            {
+                UserRepresentation userRepresentation = new UserRepresentation(
+                        user.getLastname()+" "+user.getName(), user.getUsername());
+                userRepresentations.add(userRepresentation);
+            }
         }
         return userRepresentations;
     }
@@ -113,5 +118,18 @@ public class UserServiceImplementation implements UserService
             result.add(representation);
         }
         return result;
+    }
+
+    @Override
+    public List<TermsResponse> getTerms(String username) {
+        User user = repo.findByUsername(username);
+        List<TermsResponse> terms = new ArrayList<>();
+        for(Term term : user.getTerms())
+        {
+            TermsResponse termsResponse = new TermsResponse(term.getTermID().getStartDate(),
+                    term.getTermID().getEndDate(), term.getRoom().getName(), term.getTitle(), term.getRoom().getRoomID());
+            terms.add(termsResponse);
+        }
+        return terms;
     }
 }
