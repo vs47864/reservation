@@ -7,7 +7,9 @@ import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.UserRepository;
 import de.fraunhofer.iosb.representation.RoomRepresentation;
 import de.fraunhofer.iosb.representation.TermsResponse;
+import de.fraunhofer.iosb.representation.UserDetailsRepresentation;
 import de.fraunhofer.iosb.representation.UserRepresentation;
+import de.fraunhofer.iosb.services.RoomService;
 import de.fraunhofer.iosb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,11 @@ public class UserServiceImplementation implements UserService
 
     @Autowired
     private RoomRepository roomRepository;
+
+    @Autowired
+    private RoomService roomService;
+
+    private static final long HOUR = 3_600_000;
 
     @Override
     public List<UserRepresentation> getAllUsersInRepresentation(User user1)
@@ -114,7 +121,33 @@ public class UserServiceImplementation implements UserService
         User user = repo.findByUsername(username);
         for (Room room : user.getFavorites().values())
         {
-            RoomRepresentation representation = new RoomRepresentation(room.roomID, room.name, room.occupied, new Date(), new Date(), true);
+            Term term;
+            RoomRepresentation representation = null;
+            if(room.getOccupied())
+            {
+                term = roomService.getCurentTerm(room.roomID);
+                if(term != null)
+                {
+                    representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), true);
+                }
+            }else
+            {
+                term = roomService.getNextTerm(room.roomID);
+                if(term != null)
+                {
+                    representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), true);
+                }
+            }
+
+            if(term == null)
+            {
+                //IF is aveliable and hasnt upcomming event than set free next 8 hours
+                Calendar date = Calendar.getInstance();
+                long t = date.getTimeInMillis();
+                Date hour = new Date(t + 8 * HOUR);
+                representation = new RoomRepresentation(room.roomID, room.name, room.occupied, hour, hour, true);
+            }
+
             result.add(representation);
         }
         return result;
@@ -131,5 +164,31 @@ public class UserServiceImplementation implements UserService
             terms.add(termsResponse);
         }
         return terms;
+    }
+
+    @Override
+    public List<UserRepresentation> getQueryResponse(String query)
+    {
+        List<User> users =repo.findUsersByNameContainsOrLastnameContains(query, query);
+        List<UserRepresentation> userRepresentations = new ArrayList<>();
+        for (User user : users)
+        {
+            UserRepresentation userRepresentation = new UserRepresentation(
+                    user.getLastname()+" "+user.getName(), user.getUsername());
+            userRepresentations.add(userRepresentation);
+        }
+        return userRepresentations;
+    }
+
+    @Override
+    public UserDetailsRepresentation getUserDetails(String id)
+    {
+        User user = repo.findByUsername(id);
+        UserDetailsRepresentation userDetailsRepresentation = new UserDetailsRepresentation();
+        userDetailsRepresentation.setEmail(user.getEmail());
+        userDetailsRepresentation.setPhoneNumber(user.getNumber());
+        userDetailsRepresentation.setName(user.getName()+" "+user.getLastname());
+        userDetailsRepresentation.setTerms(getTerms(id));
+        return userDetailsRepresentation;
     }
 }

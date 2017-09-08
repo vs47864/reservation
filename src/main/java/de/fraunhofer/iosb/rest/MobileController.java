@@ -130,4 +130,28 @@ public class MobileController
         List<TermsResponse> termsResponses =  userService.getTerms(principal.getName());
         return termsResponses;
     }
+
+    @RequestMapping(value = "/users/search", method = RequestMethod.POST)
+    public List<UserRepresentation> searchUsers(@RequestBody SearchRequest query)
+    {
+        return userService.getQueryResponse(query.getQuery());
+    }
+
+    @RequestMapping(value = "/rooms/search", method = RequestMethod.POST)
+    public List<UserRepresentation> searchRooms(@RequestBody SearchRequest query)
+    {
+        return roomService.getQueryResponse(query.getQuery());
+    }
+
+    @RequestMapping(value = "/users/one", method = RequestMethod.POST)
+    public UserDetailsRepresentation userDetails(@RequestBody SearchRequest query)
+    {
+        return userService.getUserDetails(query.getQuery());
+    }
+
+    @RequestMapping(value = "/rooms/one", method = RequestMethod.POST)
+    public RoomDetailsRepresentation roomDetails(@RequestBody SearchRequest query, Principal principal)
+    {
+        return roomService.getRoomDetails(query.getQuery(), principal.getName());
+    }
 }

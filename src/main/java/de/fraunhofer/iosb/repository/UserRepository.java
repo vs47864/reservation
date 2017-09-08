@@ -9,4 +9,5 @@ public interface UserRepository extends CrudRepository<User, String>
 {
     User findByUsername(String username);
     User findByToken(String token);
+    List<User> findUsersByNameContainsOrLastnameContains(String query, String query1);
 }

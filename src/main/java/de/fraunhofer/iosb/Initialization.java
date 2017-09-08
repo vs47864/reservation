@@ -45,7 +45,7 @@ public class Initialization  implements CommandLineRunner
         User userAdmin = new User("admin", "admin", "Admin", "Admin", "admin@fer.hr", "0");
         userRepo.save(userAdmin);
 
-        User userAdmin1 = new User("admin@fer.hr", "admin1", "Admin", "Admin", "admin@fer.hr", "0");
+        User userAdmin1 = new User("admin@fer.hr", "admin1", "Viseslav", "Admin", "admin@fer.hr", "0");
         userAdmin1.getFavorites().put(r22.getRoomID(), r22);
         userAdmin1.setToken("e67a3e52-24d8-44cc-bec7-5bd2371c55d9");
         userRepo.save(userAdmin1);

@@ -5,8 +5,8 @@ import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.TermRepository;
-import de.fraunhofer.iosb.representation.NearbyRequest;
-import de.fraunhofer.iosb.representation.RoomRepresentation;
+import de.fraunhofer.iosb.repository.UserRepository;
+import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.RoomService;
 import javafx.util.Pair;
 import org.joda.time.Interval;
@@ -22,6 +22,9 @@ public class RoomServiceImplementation implements RoomService
 
     @Autowired
     private RoomRepository roomRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private TermRepository termRepository;
@@ -156,11 +159,47 @@ public class RoomServiceImplementation implements RoomService
         else return null;
     }
 
+    @Override
     public Term getCurentTerm(String id)
     {
         Room room = roomRepository.findByRoomID(id);
         Term term = termRepository.findByRoomAndTermID_StartDateLessThanEqualAndTermID_EndDateGreaterThanEqual(room, new Date(), new Date());
         return term;
+    }
+
+    @Override
+    public List<UserRepresentation> getQueryResponse(String query)
+    {
+        List<Room> rooms =roomRepository.findRoomsByNameContains(query);
+        List<UserRepresentation> userRepresentations = new ArrayList<>();
+        for (Room room : rooms)
+        {
+            UserRepresentation userRepresentation = new UserRepresentation(room.name, room.getRoomID());
+            userRepresentations.add(userRepresentation);
+        }
+        return userRepresentations;
+    }
+
+    @Override
+    public RoomDetailsRepresentation getRoomDetails(String query, String username)
+    {
+        RoomDetailsRepresentation roomDetailsRepresentation = new RoomDetailsRepresentation();
+        Room room = roomRepository.findByRoomID(query);
+        User user = userRepository.findByUsername(username);
+
+        roomDetailsRepresentation.setFavorite(user.getFavorites().containsKey(room.getRoomID()));
+        roomDetailsRepresentation.setOccupied(room.getOccupied());
+
+        List<TermsResponse> terms = new ArrayList<>();
+        for(Term term : room.getTerms())
+        {
+            TermsResponse termsResponse = new TermsResponse(term.getTermID().getStartDate(),
+                    term.getTermID().getEndDate(), term.getRoom().getName(), term.getTitle(), term.getRoom().getRoomID());
+            terms.add(termsResponse);
+        }
+        roomDetailsRepresentation.setTerms(terms);
+
+        return roomDetailsRepresentation;
     }
 
 }

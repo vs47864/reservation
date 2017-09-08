@@ -2,24 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfaada81-83ca-4fd3-8697-859e571c8d72" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/SearchRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserDetailsRepresentation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/Initialization.class" afterPath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/Initialization.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/repository/RoomRepository.class" afterPath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/repository/RoomRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/repository/UserRepository.class" afterPath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/repository/UserRepository.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/rest/MobileController.class" afterPath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/rest/MobileController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/services/RoomService.class" afterPath="$PROJECT_DIR$/out/production/classes/de/fraunhofer/iosb/services/RoomService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/resources/application.properties" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Initialization.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Initialization.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/RoomRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/RoomRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomDetailsRepresentation.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomDetailsRepresentation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserRepresentation.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserRepresentation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RoomServiceImplementation.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RoomServiceImplementation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/TermServiceImplementation.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/TermServiceImplementation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java" afterPath="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -78,8 +78,8 @@
       <file leaf-file-name="MobileController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="108" column="59" lean-forward="false" selection-start-line="108" selection-start-column="59" selection-end-line="108" selection-end-column="59" />
+            <state relative-caret-position="335">
+              <caret line="154" column="79" lean-forward="false" selection-start-line="154" selection-start-column="79" selection-end-line="154" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,15 +87,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TermServiceImplementation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/TermServiceImplementation.java">
+      <file leaf-file-name="RoomService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
-              <folding>
-                <element signature="method#getFavoriteRoomTerms#0;class#TermServiceImplementation#0" expanded="false" />
-                <element signature="method#getTerm#0;class#TermServiceImplementation#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="442">
+              <caret line="33" column="74" lean-forward="false" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoomServiceImplementation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RoomServiceImplementation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="638">
+              <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,10 +110,10 @@
       <file leaf-file-name="UserServiceImplementation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+            <state relative-caret-position="297">
+              <caret line="164" column="9" lean-forward="true" selection-start-line="158" selection-start-column="8" selection-end-line="164" selection-end-column="9" />
               <folding>
-                <element signature="method#getAllUsersInRepresentation#0;class#UserServiceImplementation#0" expanded="false" />
+                <element signature="imports" expanded="true" />
                 <element signature="method#getUsersByIds#0;class#UserServiceImplementation#0" expanded="false" />
                 <element signature="method#scheduleCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
                 <element signature="method#setCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
@@ -118,32 +125,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoomServiceImplementation.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RoomServiceImplementation.java">
+      <file leaf-file-name="UserDetailsRepresentation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserDetailsRepresentation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="56" column="86" lean-forward="false" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="170">
+              <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#290#291#0" expanded="true" />
+                <element signature="e#318#319#0" expanded="true" />
+                <element signature="e#360#361#0" expanded="true" />
+                <element signature="e#394#395#0" expanded="true" />
+                <element signature="e#432#433#0" expanded="true" />
+                <element signature="e#466#467#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#566#567#0" expanded="true" />
+                <element signature="e#611#612#0" expanded="true" />
+                <element signature="e#639#640#0" expanded="true" />
+                <element signature="e#694#695#0" expanded="true" />
+                <element signature="e#728#729#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,6 +164,8 @@
       <find>getTime</find>
       <find>date</find>
       <find>true</find>
+      <find>favo</find>
+      <find>favorite</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -535,11 +538,8 @@
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/NearbyRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/seucrity/TokenUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/seucrity/AuthenticationTokenFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/RoomRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/RoomDetailsRepresentation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomDetailsRepresentation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserRepresentation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/ReservationResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/entity/key/TermId.java" />
@@ -549,7 +549,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/ReserveRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomRepresentation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RommServiceImplementation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/TermRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/TermService.java" />
@@ -557,12 +556,18 @@
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/TermsResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/TermDetailsResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/TermServiceImplementation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/SearchRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/RoomRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserDetailsRepresentation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Initialization.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserRepresentation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomDetailsRepresentation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RoomServiceImplementation.java" />
       </list>
     </option>
@@ -574,8 +579,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1317" />
-    <option name="y" value="-8" />
+    <option name="x" value="-1635" />
+    <option name="y" value="-13" />
     <option name="width" value="1296" />
     <option name="height" value="1000" />
   </component>
@@ -630,6 +635,41 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="iosb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reservation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reservation" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="iosb" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reservation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reservation" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="iosb" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reservation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reservation" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="iosb" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reservation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reservation" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="reservation" type="b2602c69:ProjectViewProjectNode" />
@@ -867,7 +907,7 @@
       <workItem from="1503646721201" duration="2481000" />
       <workItem from="1504526709855" duration="86000" />
       <workItem from="1504527017993" duration="11517000" />
-      <workItem from="1504680259539" duration="6107000" />
+      <workItem from="1504680259539" duration="26045000" />
     </task>
     <task id="LOCAL-00001" summary="Day two">
       <created>1502374936034</created>
@@ -946,11 +986,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503649419806</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Propravci">
+      <created>1504710519812</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1504710519812</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178302000" />
+    <option name="totallyTimeSpent" value="198240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-8" width="1296" height="1000" extended-state="6" />
@@ -964,7 +1011,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41262683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41262683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -978,7 +1025,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3990981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3990981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1002,7 +1049,8 @@
     <MESSAGE value="Kalendar v.1.0" />
     <MESSAGE value="Event" />
     <MESSAGE value="ZAdnji." />
-    <option name="LAST_COMMIT_MESSAGE" value="ZAdnji." />
+    <MESSAGE value="Propravci" />
+    <option name="LAST_COMMIT_MESSAGE" value="Propravci" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1025,33 +1073,27 @@
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java</url>
+          <line>187</line>
+          <properties />
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="76" />
+      <option name="time" value="82" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#309#310#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/auth/Authenticator.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.2.3.RELEASE/2804ac6a00705bed0836fe5826e0496ace681469/spring-security-web-4.2.3.RELEASE-sources.jar!/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1099,13 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomDetailsRepresentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1181,13 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/ReserveRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="34" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/ReservationResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1199,13 +1227,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2941">
           <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/entity/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="66" column="5" lean-forward="false" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1233,34 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/seucrity/AuthenticationTokenFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/RoomRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/TermRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="108" lean-forward="false" selection-start-line="15" selection-start-column="108" selection-end-line="15" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RommServiceImplementation.java" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -1283,20 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserRepresentation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/TermsResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/TermDetailsResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1308,6 +1287,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,72 +1295,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3111">
           <caret line="401" column="44" lean-forward="false" selection-start-line="401" selection-start-column="44" selection-end-line="401" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="108" column="59" lean-forward="false" selection-start-line="108" selection-start-column="59" selection-end-line="108" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding>
-            <element signature="method#getAllUsersInRepresentation#0;class#UserServiceImplementation#0" expanded="false" />
-            <element signature="method#getUsersByIds#0;class#UserServiceImplementation#0" expanded="false" />
-            <element signature="method#scheduleCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
-            <element signature="method#setCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
-            <element signature="method#unSetCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
-            <element signature="method#makeFavorite#0;class#UserServiceImplementation#0" expanded="false" />
-            <element signature="method#getFavoriteRoom#0;class#UserServiceImplementation#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Initialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1396,10 +1310,214 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Calendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="514" column="28" lean-forward="false" selection-start-line="514" selection-start-column="28" selection-end-line="514" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/TermRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="108" lean-forward="false" selection-start-line="15" selection-start-column="108" selection-end-line="15" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/seucrity/AuthenticationTokenFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/ReserveRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="34" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="e#627#628#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/SearchRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#174#175#0" expanded="false" />
+            <element signature="e#208#209#0" expanded="false" />
+            <element signature="e#240#241#0" expanded="false" />
+            <element signature="e#268#269#0" expanded="false" />
+            <element signature="e#310#311#0" expanded="false" />
+            <element signature="e#344#345#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="84" lean-forward="false" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/repository/RoomRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/TermsResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserDetailsRepresentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/Initialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/entity/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="66" column="5" lean-forward="false" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+          <folding>
+            <element signature="e#1383#1384#0" expanded="true" />
+            <element signature="e#1417#1418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/UserRepresentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/representation/RoomDetailsRepresentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="15" column="91" lean-forward="false" selection-start-line="15" selection-start-column="91" selection-end-line="15" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#902#903#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/rest/MobileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="154" column="79" lean-forward="false" selection-start-line="154" selection-start-column="79" selection-end-line="154" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/RoomService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="74" lean-forward="false" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/UserServiceImplementation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="164" column="9" lean-forward="true" selection-start-line="158" selection-start-column="8" selection-end-line="164" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getUsersByIds#0;class#UserServiceImplementation#0" expanded="false" />
+            <element signature="method#scheduleCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
+            <element signature="method#setCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
+            <element signature="method#unSetCurrentRoom#0;class#UserServiceImplementation#0" expanded="false" />
+            <element signature="method#makeFavorite#0;class#UserServiceImplementation#0" expanded="false" />
+            <element signature="method#getFavoriteRoom#0;class#UserServiceImplementation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/fraunhofer/iosb/services/impl/RoomServiceImplementation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="56" column="86" lean-forward="false" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
+        <state relative-caret-position="638">
+          <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding />
         </state>
       </provider>

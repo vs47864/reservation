@@ -2,9 +2,9 @@ package de.fraunhofer.iosb.representation;
 
 public class UserRepresentation
 {
-    private String name;
+    String name;
 
-    private String userID;
+    String userID;
 
     public UserRepresentation(String name, String userID) {
         this.name = name;

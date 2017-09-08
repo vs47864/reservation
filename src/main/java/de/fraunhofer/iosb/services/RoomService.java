@@ -3,8 +3,7 @@ package de.fraunhofer.iosb.services;
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
-import de.fraunhofer.iosb.representation.NearbyRequest;
-import de.fraunhofer.iosb.representation.RoomRepresentation;
+import de.fraunhofer.iosb.representation.*;
 import javafx.util.Pair;
 
 import java.util.Date;
@@ -27,4 +26,10 @@ public interface RoomService
     void scheduleOccupation(String id, Date startTime, Date endTime);
 
     Term getNextTerm(String id);
+
+    Term getCurentTerm(String id);
+
+    List<UserRepresentation> getQueryResponse(String query);
+
+    RoomDetailsRepresentation getRoomDetails(String query, String username);
 }

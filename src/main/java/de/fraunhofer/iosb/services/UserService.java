@@ -4,6 +4,7 @@ import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.representation.RoomRepresentation;
 import de.fraunhofer.iosb.representation.TermsResponse;
+import de.fraunhofer.iosb.representation.UserDetailsRepresentation;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 
 import java.util.Date;
@@ -28,4 +29,8 @@ public interface UserService
     List<RoomRepresentation> getFavoriteRoom(String username);
 
     List<TermsResponse> getTerms(String username);
+
+    List<UserRepresentation> getQueryResponse(String query);
+
+    UserDetailsRepresentation getUserDetails(String id);
 }
