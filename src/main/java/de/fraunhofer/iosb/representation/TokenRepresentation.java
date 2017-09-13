@@ -3,11 +3,15 @@ package de.fraunhofer.iosb.representation;
 public class TokenRepresentation
 {
     private String token;
+
+    private boolean admin;
+
     public TokenRepresentation() {}
 
-    public TokenRepresentation(String token)
+    public TokenRepresentation(String token, boolean admin)
     {
         this.token = token;
+        this.admin = admin;
     }
 
     public String getToken()
@@ -20,11 +24,11 @@ public class TokenRepresentation
         this.token = token;
     }
 
-    @Override
-    public String toString()
-    {
-        return "TokenRepresentation{" +
-                "token='" + token + '\'' +
-                '}';
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

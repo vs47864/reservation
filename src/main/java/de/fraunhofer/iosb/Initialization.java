@@ -1,7 +1,9 @@
 package de.fraunhofer.iosb;
 
+import de.fraunhofer.iosb.entity.Role;
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
+import de.fraunhofer.iosb.repository.RoleRepository;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.UserRepository;
 import org.slf4j.Logger;
@@ -19,10 +21,13 @@ public class Initialization  implements CommandLineRunner
 
     private RoomRepository repoRoom;
     private UserRepository userRepo;
+    private RoleRepository roleRepo;
+
 
     @Autowired
-    public Initialization(RoomRepository repoRoom, UserRepository userRepo)
+    public Initialization(RoomRepository repoRoom, UserRepository userRepo, RoleRepository roleRepo)
     {
+        this.roleRepo = roleRepo;
         this.repoRoom = repoRoom;
         this.userRepo = userRepo;
     }
@@ -42,10 +47,10 @@ public class Initialization  implements CommandLineRunner
         Room all = new Room("all", "http://localhost:8080/rooms/all", "neki token");
         repoRoom.save(all);
 
-        User userAdmin = new User("admin", "admin", "Admin", "Admin", "admin@fer.hr", "0");
+        User userAdmin = new User("admin@fer.hr", "admin", "Admin", "Admin", "admin@fer.hr", "0");
         userRepo.save(userAdmin);
 
-        User userAdmin1 = new User("admin@fer.hr", "admin1", "Viseslav", "Admin", "admin@fer.hr", "0");
+        User userAdmin1 = new User("admin1@fer.hr", "admin1", "Viseslav", "Admin", "admin@fer.hr", "0");
         userAdmin1.getFavorites().put(r22.getRoomID(), r22);
         userAdmin1.setToken("e67a3e52-24d8-44cc-bec7-5bd2371c55d9");
         userRepo.save(userAdmin1);
@@ -59,6 +64,11 @@ public class Initialization  implements CommandLineRunner
         user22.setCurentRoom(r18);
         userRepo.save(user22);
 
+        Role roleAdmin = new Role();
+        roleAdmin.setRoom(r18);
+        roleAdmin.setRole("admin");
+        roleAdmin.setUser(userAdmin1);
+        roleRepo.save(roleAdmin);
 
         addUserForRoom(r18, "bb46865", "bilokoji", "Boris", "Belaj", "boris.belaj@fer.hr", "3");
         addUserForRoom(r18, "luka", "svejedno", "Luka", "Ušalj", "luka.usalj@fer.hr", "4");

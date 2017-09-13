@@ -53,7 +53,7 @@ public class MobileController
 
         if(checked)
         {
-            TokenRepresentation tokenRepresentation = new TokenRepresentation(loginService.createToken(userCredential.getUsername()));
+            TokenRepresentation tokenRepresentation = new TokenRepresentation(loginService.createToken(userCredential.getUsername()),loginService.checkIfAdmin(userCredential.getUsername()));
             LOG.debug("Returns at /login {}", tokenRepresentation);
             return tokenRepresentation;
         } else

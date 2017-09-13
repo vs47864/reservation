@@ -39,10 +39,10 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
         if (username != null) { // && SecurityContextHolder.getContext().getAuthentication() == null) {
             LOG.debug("found user by provided token - username: {}", username);
-            User user = loginService.getUserFromToken(authToken);
-            if (tokenUtils.validateToken(authToken)) {
+            UserDetails user = loginService.loadUserByUsername(username);
+            if (tokenUtils.validateToken(authToken, user)) {
                 LOG.debug("user '{}' has valid token", username);
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, null);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } else {

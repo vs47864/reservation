@@ -1,8 +1,11 @@
 package de.fraunhofer.iosb.services.impl;
 
+import de.fraunhofer.iosb.entity.Role;
 import de.fraunhofer.iosb.entity.User;
+import de.fraunhofer.iosb.repository.RoleRepository;
 import de.fraunhofer.iosb.repository.UserRepository;
 import de.fraunhofer.iosb.services.LoginService;
+import de.fraunhofer.iosb.seucrity.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +19,9 @@ public class LoginServiceImplementation implements LoginService
 {
     @Autowired
     private UserRepository repo;
+
+    @Autowired
+    private RoleRepository roleRepo;
 
     public boolean checkUserNameAndPassword(String username, String password)
     {
@@ -35,11 +41,14 @@ public class LoginServiceImplementation implements LoginService
         return repo.findByToken(authToken);
     }
 
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
-    {
-        //TODO
-        return null;
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = repo.findOne(username);
+        if(user == null)
+            throw new UsernameNotFoundException(username);
+
+        return new CustomUserDetails(user, roleRepo.findAllByUser(user));
     }
 
     @Override
@@ -56,5 +65,21 @@ public class LoginServiceImplementation implements LoginService
         repo.save(user);
 
         return token;
+    }
+
+    @Override
+    public boolean checkIfAdmin(String username)
+    {
+        User user = repo.findByUsername(username);
+
+        for(Role role : user.getRole())
+        {
+            if(role.getRole().equals("admin"))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

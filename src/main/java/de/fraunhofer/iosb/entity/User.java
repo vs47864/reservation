@@ -43,6 +43,9 @@ public class User
     @ManyToMany
     private List<Term> terms = new ArrayList<>();
 
+    @OneToMany(mappedBy="user")
+    private List<Role> role = new ArrayList<>();
+
     @ManyToMany
     private Map<String, Room> favorites = new HashMap<>();
 
@@ -147,5 +150,13 @@ public class User
 
     public void setFavorites(Map<String, Room> favorites) {
         this.favorites = favorites;
+    }
+
+    public List<Role> getRole() {
+        return role;
+    }
+
+    public void setRole(List<Role> role) {
+        this.role = role;
     }
 }

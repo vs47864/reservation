@@ -28,7 +28,7 @@ public class TokenUtils
         return user.getUsername();
     }
 
-    public boolean validateToken(String authToken) {
+    public boolean validateToken(String authToken, UserDetails userDetails) {
         // FEATURE za sada token nema valjanost to treba napraviti u budućnosti
         return true;
     }

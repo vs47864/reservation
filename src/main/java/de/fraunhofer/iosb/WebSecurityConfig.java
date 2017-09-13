@@ -54,7 +54,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .authorizeRequests()
                 // mobile
                 .antMatchers("/mobile/login").permitAll()
-                .antMatchers("/mobile/**").authenticated();
+                .antMatchers("/mobile/**").authenticated()
+                .antMatchers("/mobile/admin/").hasAuthority("admin");
 
         // Custom token based authentication
         httpSecurity.addFilterBefore(
