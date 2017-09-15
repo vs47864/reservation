@@ -186,9 +186,27 @@ public class RoomServiceImplementation implements RoomService
         RoomDetailsRepresentation roomDetailsRepresentation = new RoomDetailsRepresentation();
         Room room = roomRepository.findByRoomID(query);
         User user = userRepository.findByUsername(username);
+        Term term1;
 
         roomDetailsRepresentation.setFavorite(user.getFavorites().containsKey(room.getRoomID()));
         roomDetailsRepresentation.setOccupied(room.getOccupied());
+
+        if(room.getOccupied())
+        {
+            term1 = getCurentTerm(room.getRoomID());
+        }else {
+            term1 = getNextTerm(room.getRoomID());
+        }
+
+        if(term1 != null)
+        {
+            roomDetailsRepresentation.setUntil(term1.getTermID().getEndDate());
+        }else {
+            Calendar date = Calendar.getInstance();
+            long t = date.getTimeInMillis();
+            Date hour = new Date(t + 8 * HOUR);
+            roomDetailsRepresentation.setUntil(hour);
+        }
 
         List<TermsResponse> terms = new ArrayList<>();
         for(Term term : room.getTerms())

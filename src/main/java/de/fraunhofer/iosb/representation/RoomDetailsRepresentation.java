@@ -1,6 +1,7 @@
 package de.fraunhofer.iosb.representation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RoomDetailsRepresentation
@@ -10,6 +11,8 @@ public class RoomDetailsRepresentation
     private boolean occupied;
 
     private List<TermsResponse> terms = new ArrayList<>();
+
+    private Date until;
 
     public RoomDetailsRepresentation(){}
 
@@ -41,5 +44,13 @@ public class RoomDetailsRepresentation
 
     public List<TermsResponse> getTerms() {
         return terms;
+    }
+
+    public Date getUntil() {
+        return until;
+    }
+
+    public void setUntil(Date until) {
+        this.until = until;
     }
 }
