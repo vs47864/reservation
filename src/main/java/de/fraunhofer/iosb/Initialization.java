@@ -47,10 +47,10 @@ public class Initialization  implements CommandLineRunner
         Room all = new Room("all", "http://localhost:8080/rooms/all", "neki token");
         repoRoom.save(all);
 
-        User userAdmin = new User("admin@fer.hr", "admin", "Admin", "Admin", "admin@fer.hr", "0");
+        User userAdmin = new User("admin@fer.hr", "21232f297a57a5a743894a0e4a801fc3", "Admin", "Admin", "admin@fer.hr", "0");
         userRepo.save(userAdmin);
 
-        User userAdmin1 = new User("admin1@fer.hr", "admin1", "Viseslav", "Admin", "admin@fer.hr", "0");
+        User userAdmin1 = new User("admin1@fer.hr", "e00cf25ad42683b3df678c61f42c6bda", "Viseslav", "Admin", "admin@fer.hr", "0");
         userAdmin1.getFavorites().put(r22.getRoomID(), r22);
         userAdmin1.setToken("e67a3e52-24d8-44cc-bec7-5bd2371c55d9");
         userRepo.save(userAdmin1);
@@ -61,6 +61,7 @@ public class Initialization  implements CommandLineRunner
         userRepo.save(user18);
 
         User user22 = new User("user22", "user22", "User22", "User22", "user22@fer.hr", "2");
+        user22.setNfccode("12345678");
         user22.setCurentRoom(r18);
         userRepo.save(user22);
 

@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -84,20 +85,50 @@ public class MobileController
 
     @RequestMapping(value = "/room/{id}", method = RequestMethod.POST)
     public ReservationResponse roomDetails(@PathVariable(value="id") String id,
-                                                 Principal principal, @RequestBody ReserveRequest reserveRequest)
+                                                 Principal principal, @RequestBody ReservationRequest reservationRequest)
     {
         ReservationResponse reservationResponse = new ReservationResponse();
-        Pair<Date, Date> dates = roomService.parseDates(reserveRequest.getStartTime(), reserveRequest.getEndTime(),
-                                                        reserveRequest.getDate());
-        if(roomService.checkIfRoomIsAvailable(id, dates.getKey(), dates.getValue()))
+        Pair<Date, Date> dates = roomService.parseDates(reservationRequest.getStartTime(), reservationRequest.getEndTime(),
+                                                        reservationRequest.getDate());
+
+        User user;
+        if(reservationRequest.getNfccode() != null)
         {
-            List<User> users = userService.getUsersByIds(reserveRequest.getUsers());
-            User user = userService.findUser(principal.getName());
+            user = userService.getUserByNFC(reservationRequest.getNfccode());
+        }else {
+            user = userService.findUser(principal.getName());
+        }
+
+        if(roomService.checkIfRoomIsAvailable(id, dates.getKey(), dates.getValue()) && user != null)
+        {
+            List<User> users = userService.getUsersByIds(reservationRequest.getUsers());
             Room room = roomService.findRoom(id);
-            termService.addTerm(user, users, room, dates.getKey(), dates.getValue(), reserveRequest.getTitle());
+            termService.addTerm(user, users, room, dates.getKey(), dates.getValue(), reservationRequest.getTitle());
             reservationResponse.setSuccess(true);
             users.add(user);
             userService.scheduleCurrentRoom(users, room, dates.getKey(), dates.getValue());
+        }
+        return reservationResponse;
+    }
+
+    @RequestMapping(value = "/room/quick/{id}", method = RequestMethod.POST)
+    public ReservationResponse roomDetails(@PathVariable(value="id") String id, Principal principal, @RequestBody QuickRoomReservationRequest reserveRequest)
+    {
+        ReservationResponse reservationResponse = new ReservationResponse();
+        Date startDate = new Date(reserveRequest.getStartTime());
+        Date endDate = new Date(reserveRequest.getEndTime());
+        User user = userService.getUserByNFC(reserveRequest.getNFCCode());
+
+        if(user == null) return reservationResponse;
+
+        if(roomService.checkIfRoomIsAvailable(id, startDate, endDate))
+        {
+            List<User> users = new ArrayList<>();
+            Room room = roomService.findRoom(id);
+            termService.addTerm(user, users, room,  startDate, endDate, reserveRequest.getTitle());
+            reservationResponse.setSuccess(true);
+            users.add(user);
+            userService.scheduleCurrentRoom(users, room, startDate, endDate);
         }
         return reservationResponse;
     }

@@ -22,6 +22,7 @@ public class User
     @NotNull
     public String password;
 
+    @Column(unique=true)
     public String token;
 
     @NotNull
@@ -29,6 +30,9 @@ public class User
 
     @NotNull
     public String lastname;
+
+    @Column(unique=true)
+    public String nfccode;
 
     @NotNull
     public String email;
@@ -158,5 +162,13 @@ public class User
 
     public void setRole(List<Role> role) {
         this.role = role;
+    }
+
+    public void setNfccode(String nfccode) {
+        this.nfccode = nfccode;
+    }
+
+    public String getNfccode() {
+        return nfccode;
     }
 }

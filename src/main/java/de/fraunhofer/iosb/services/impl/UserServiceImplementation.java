@@ -191,4 +191,10 @@ public class UserServiceImplementation implements UserService
         userDetailsRepresentation.setTerms(getTerms(id));
         return userDetailsRepresentation;
     }
+
+    @Override
+    public User getUserByNFC(String nfcCode)
+    {
+        return repo.findByNfccode(nfcCode);
+    }
 }

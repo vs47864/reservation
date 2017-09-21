@@ -2,11 +2,13 @@ package de.fraunhofer.iosb.representation;
 
 import java.util.ArrayList;
 
-public class ReserveRequest
+public class ReservationRequest
 {
     private String startTime;
 
     private String endTime;
+
+    private String nfccode;
 
     private String date;
 
@@ -14,7 +16,7 @@ public class ReserveRequest
 
     private ArrayList<String> users;
 
-    public ReserveRequest(String startTime, String endTime, String date, String title, ArrayList<String> users) {
+    public ReservationRequest(String startTime, String endTime, String date, String title, ArrayList<String> users) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
@@ -22,7 +24,24 @@ public class ReserveRequest
         this.users = users;
     }
 
-    public ReserveRequest() {
+    public ReservationRequest(String nfccode, String startTime, String endTime, String date, String title, ArrayList<String> users) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.date = date;
+        this.title = title;
+        this.users = users;
+        this.nfccode = nfccode;
+    }
+
+    public ReservationRequest() {
+    }
+
+    public String getNfccode() {
+        return nfccode;
+    }
+
+    public void setNfccode(String nfccode) {
+        this.nfccode = nfccode;
     }
 
     public String getStartTime() {

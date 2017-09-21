@@ -19,10 +19,14 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	maven {
+		url "https://jcenter.bintray.com"
+	}
 }
 
 
 dependencies {
+	compile('de.fraunhofer.iosb.ilt:SensorThingsClient:0.13')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')

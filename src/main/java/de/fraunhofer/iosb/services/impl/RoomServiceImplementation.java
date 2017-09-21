@@ -139,7 +139,6 @@ public class RoomServiceImplementation implements RoomService
                 makeRoomOcupied(id);
             }
         }, startTime);
-
         timer.schedule(new TimerTask() {
             public void run() {
                 makeRoomUnocupied(id);

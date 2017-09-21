@@ -16,15 +16,15 @@ public class RoomRepresentation
 
     private Date from;
 
-    private Date untill;
+    private Date until;
 
-    public RoomRepresentation(String roomID, String name, boolean occupied, Date from, Date untill, boolean favorite)
+    public RoomRepresentation(String roomID, String name, boolean occupied, Date from, Date until, boolean favorite)
     {
         this.roomID = roomID;
         this.name = name;
         this.occupied = occupied;
         this.from = from;
-        this.untill = untill;
+        this.until = until;
         this.favorite = favorite;
     }
 
@@ -68,11 +68,11 @@ public class RoomRepresentation
         this.from = from;
     }
 
-    public Date getUntill() {
-        return untill;
+    public Date getUntil() {
+        return until;
     }
 
-    public void setUntill(Date untill) {
-        this.untill = untill;
+    public void setUntil(Date until) {
+        this.until = until;
     }
 }

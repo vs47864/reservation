@@ -33,4 +33,6 @@ public interface UserService
     List<UserRepresentation> getQueryResponse(String query);
 
     UserDetailsRepresentation getUserDetails(String id);
+
+    User getUserByNFC(String nfcCode);
 }
