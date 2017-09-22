@@ -17,6 +17,8 @@ public class Room {
     @Id
     public String roomID;
 
+    public List<String> bleIds = new ArrayList<>();
+
     public Boolean occupied = false;
 
     public String name;

@@ -53,11 +53,10 @@ public class LoginServiceImplementation implements LoginService
 
     @Override
     @Transactional
-    public String createToken(String username)
+    public String createToken(User user)
     {
         String token = UUID.randomUUID().toString();
 
-        User user = repo.findByUsername(username);
         while(repo.findByToken(token) != null)
             token = UUID.randomUUID().toString();
 
@@ -68,10 +67,8 @@ public class LoginServiceImplementation implements LoginService
     }
 
     @Override
-    public boolean checkIfAdmin(String username)
+    public boolean checkIfAdmin(User user)
     {
-        User user = repo.findByUsername(username);
-
         for(Role role : user.getRole())
         {
             if(role.getRole().equals("admin"))
@@ -79,7 +76,6 @@ public class LoginServiceImplementation implements LoginService
                 return true;
             }
         }
-
         return false;
     }
 }

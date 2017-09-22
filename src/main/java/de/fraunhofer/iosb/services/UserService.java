@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface UserService
 {
-    List<UserRepresentation> getAllUsersInRepresentation(User user1);
+    List<UserRepresentation> getAllUsersInRepresentation();
 
     List<User> getUsersByIds(List<String> ids);
 
@@ -26,7 +26,7 @@ public interface UserService
 
     void makeFavorite(String roomId, User user);
 
-    List<RoomRepresentation> getFavoriteRoom(String username);
+    List<RoomRepresentation> getFavoritesRoom(String username);
 
     List<TermsResponse> getTerms(String username);
 

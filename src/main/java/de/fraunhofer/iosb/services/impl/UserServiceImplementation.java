@@ -28,21 +28,17 @@ public class UserServiceImplementation implements UserService
     @Autowired
     private RoomService roomService;
 
-    private static final long HOUR = 3_600_000;
+    private static final long HOUR = 3600*1000;
 
     @Override
-    public List<UserRepresentation> getAllUsersInRepresentation(User user1)
+    public List<UserRepresentation> getAllUsersInRepresentation()
     {
         List<UserRepresentation> userRepresentations = new ArrayList<>();
 
         for (User user : repo.findAll())
         {
-            if(!user.equals(user1))
-            {
-                UserRepresentation userRepresentation = new UserRepresentation(
-                        user.getLastname()+" "+user.getName(), user.getUsername());
-                userRepresentations.add(userRepresentation);
-            }
+            UserRepresentation userRepresentation = new UserRepresentation(user.getLastname()+" "+user.getName(), user.getUsername());
+            userRepresentations.add(userRepresentation);
         }
         return userRepresentations;
     }
@@ -76,7 +72,6 @@ public class UserServiceImplementation implements UserService
                 setCurrentRoom(room, users);
             }
         }, startTime);
-
         timer.schedule(new TimerTask() {
             public void run() {
                 unSetCurrentRoom(users);
@@ -115,24 +110,24 @@ public class UserServiceImplementation implements UserService
     }
 
     @Override
-    public List<RoomRepresentation> getFavoriteRoom(String username)
+    public List<RoomRepresentation> getFavoritesRoom(String username)
     {
         List<RoomRepresentation> result = new ArrayList<>();
         User user = repo.findByUsername(username);
         for (Room room : user.getFavorites().values())
         {
             Term term;
-            RoomRepresentation representation = null;
+            RoomRepresentation representation = new RoomRepresentation();
             if(room.getOccupied())
             {
-                term = roomService.getCurentTerm(room.roomID);
+                term = roomService.getCurrentTerm(room);
                 if(term != null)
                 {
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), true);
                 }
             }else
             {
-                term = roomService.getNextTerm(room.roomID);
+                term = roomService.getNextTerm(room);
                 if(term != null)
                 {
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), true);
@@ -141,7 +136,7 @@ public class UserServiceImplementation implements UserService
 
             if(term == null)
             {
-                //IF is aveliable and hasnt upcomming event than set free next 8 hours
+                //If is available and hasn't upcoming event than set free next 8 hours
                 Calendar date = Calendar.getInstance();
                 long t = date.getTimeInMillis();
                 Date hour = new Date(t + 8 * HOUR);
@@ -154,8 +149,9 @@ public class UserServiceImplementation implements UserService
     }
 
     @Override
-    public List<TermsResponse> getTerms(String username) {
-        User user = repo.findByUsername(username);
+    public List<TermsResponse> getTerms(String username)
+    {
+        User user = findUser(username);
         List<TermsResponse> terms = new ArrayList<>();
         for(Term term : user.getTerms())
         {
@@ -170,11 +166,11 @@ public class UserServiceImplementation implements UserService
     public List<UserRepresentation> getQueryResponse(String query)
     {
         List<User> users =repo.findUsersByNameContainsOrLastnameContains(query, query);
+
         List<UserRepresentation> userRepresentations = new ArrayList<>();
         for (User user : users)
         {
-            UserRepresentation userRepresentation = new UserRepresentation(
-                    user.getLastname()+" "+user.getName(), user.getUsername());
+            UserRepresentation userRepresentation = new UserRepresentation(user.getLastname()+" "+user.getName(), user.getUsername());
             userRepresentations.add(userRepresentation);
         }
         return userRepresentations;
@@ -183,12 +179,14 @@ public class UserServiceImplementation implements UserService
     @Override
     public UserDetailsRepresentation getUserDetails(String id)
     {
-        User user = repo.findByUsername(id);
+        User user = findUser(id);
+
         UserDetailsRepresentation userDetailsRepresentation = new UserDetailsRepresentation();
         userDetailsRepresentation.setEmail(user.getEmail());
         userDetailsRepresentation.setPhoneNumber(user.getNumber());
         userDetailsRepresentation.setName(user.getName()+" "+user.getLastname());
         userDetailsRepresentation.setTerms(getTerms(id));
+
         return userDetailsRepresentation;
     }
 

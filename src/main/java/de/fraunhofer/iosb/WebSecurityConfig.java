@@ -1,10 +1,7 @@
 package de.fraunhofer.iosb;
 
-
 import de.fraunhofer.iosb.services.LoginService;
 import de.fraunhofer.iosb.seucrity.AuthenticationTokenFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +13,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
+/**
+ *
+ *
+ * @author Viseslav Sako
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
-    private static final Logger LOG = LoggerFactory.getLogger(WebSecurityConfig.class);
-
     @Autowired
     private LoginService userDetailsService;
 
@@ -47,8 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        LOG.debug(" in configure");
-
         httpSecurity
                 .csrf().disable()
                 .authorizeRequests()

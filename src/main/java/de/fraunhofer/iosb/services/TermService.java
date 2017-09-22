@@ -12,7 +12,7 @@ public interface TermService
 {
     void addTerm(User user, List<User> users, Room room, Date from, Date untill, String title);
 
-    List<TermsResponse> getFavoriteRoomTerms(String username);
+    List<TermsResponse> getFavoriteRoomsTerms(String username);
 
     TermDetailsResponse getTerm(TermsResponse term);
 }

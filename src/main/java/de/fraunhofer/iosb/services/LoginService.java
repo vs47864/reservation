@@ -9,7 +9,7 @@ public interface LoginService extends UserDetailsService
 
     User getUserFromToken(String authToken);
 
-    String createToken(String username);
+    String createToken(User user);
 
-    boolean checkIfAdmin(String username);
+    boolean checkIfAdmin(User user);
 }

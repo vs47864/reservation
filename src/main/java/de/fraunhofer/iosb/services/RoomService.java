@@ -19,15 +19,15 @@ public interface RoomService
 
     Room findRoom(String id);
 
-    void makeRoomOcupied(String id);
+    void makeRoomOccupied(String id);
 
-    void makeRoomUnocupied(String id);
+    void makeRoomUnoccupied(String id);
 
     void scheduleOccupation(String id, Date startTime, Date endTime);
 
-    Term getNextTerm(String id);
+    Term getNextTerm(Room room);
 
-    Term getCurentTerm(String id);
+    Term getCurrentTerm(Room room);
 
     List<UserRepresentation> getQueryResponse(String query);
 

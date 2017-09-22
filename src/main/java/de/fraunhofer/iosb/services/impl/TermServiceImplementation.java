@@ -10,6 +10,7 @@ import de.fraunhofer.iosb.representation.TermDetailsResponse;
 import de.fraunhofer.iosb.representation.TermsResponse;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 import de.fraunhofer.iosb.services.TermService;
+import de.fraunhofer.iosb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +27,19 @@ public class TermServiceImplementation implements TermService
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserService userService;
+
     @Override
     public void addTerm(User user, List<User> users, Room room, Date from, Date until, String title)
     {
         TermId termId = new TermId(from, until, room.roomID);
         Term term = new Term(termId, title, room, user, users);
+
         termRepository.save(term);
         user.getTerms().add(term);
         userRepository.save(user);
+
         for(User user1 : users)
         {
             user1.getTerms().add(term);
@@ -42,9 +48,9 @@ public class TermServiceImplementation implements TermService
     }
 
     @Override
-    public List<TermsResponse> getFavoriteRoomTerms(String username)
+    public List<TermsResponse> getFavoriteRoomsTerms(String username)
     {
-        User user = userRepository.findByUsername(username);
+        User user = userService.findUser(username);
         List<TermsResponse> terms = new ArrayList<>();
         for(Room room : user.getFavorites().values())
         {
@@ -59,7 +65,8 @@ public class TermServiceImplementation implements TermService
     }
 
     @Override
-    public TermDetailsResponse getTerm(TermsResponse term) {
+    public TermDetailsResponse getTerm(TermsResponse term)
+    {
         TermId termId = new TermId(term.getStartDate(), term.getEndDate(), term.getRoomId());
         Term term1 = termRepository.findOne(termId);
         List<UserRepresentation> userRepresentations = new ArrayList<>();
@@ -68,8 +75,7 @@ public class TermServiceImplementation implements TermService
             UserRepresentation userRepresentation = new UserRepresentation(user.getName() + user.lastname, user.username);
             userRepresentations.add(userRepresentation);
         }
-        UserRepresentation initUser = new UserRepresentation(term1.getUser().getName() + term1.getUser().lastname, term1.getUser().getUsername());
-        TermDetailsResponse termDetailsResponse =new TermDetailsResponse(term, initUser, userRepresentations);
-        return termDetailsResponse;
+        UserRepresentation initUser = new UserRepresentation(term1.getUser().getName() +" "+ term1.getUser().lastname, term1.getUser().getUsername());
+        return new TermDetailsResponse(term, initUser, userRepresentations);
     }
 }

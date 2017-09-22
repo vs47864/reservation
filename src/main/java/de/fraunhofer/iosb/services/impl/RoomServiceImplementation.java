@@ -5,9 +5,9 @@ import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.TermRepository;
-import de.fraunhofer.iosb.repository.UserRepository;
 import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.RoomService;
+import de.fraunhofer.iosb.services.UserService;
 import javafx.util.Pair;
 import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class RoomServiceImplementation implements RoomService
     private RoomRepository roomRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
     private TermRepository termRepository;
@@ -33,22 +33,30 @@ public class RoomServiceImplementation implements RoomService
     public List<RoomRepresentation> getListOfRooms(NearbyRequest request, User user)
     {
         List<RoomRepresentation> result = new ArrayList<>();
-        for (String id: request.getIds())
+
+        for (NearbyRoom nearbyRoom: request.getIds())
         {
+            String id = nearbyRoom.getId();
             boolean favorite = user.getFavorites().containsKey(id);
             Room room = roomRepository.findByRoomID(id);
+            if(room == null)
+            {
+                continue;
+            }
+
             Term term;
-            RoomRepresentation representation = null;
+            RoomRepresentation representation = new RoomRepresentation();
+
             if(room.getOccupied())
             {
-                term = getCurentTerm(id);
+                term = getCurrentTerm(room);
                 if(term != null)
                 {
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
                 }
             }else
             {
-                term = getNextTerm(id);
+                term = getNextTerm(room);
                 if(term != null)
                 {
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), favorite);
@@ -57,13 +65,12 @@ public class RoomServiceImplementation implements RoomService
 
             if(term == null)
             {
-                //IF is aveliable and hasnt upcomming event than set free next 8 hours
+                //If is available and hasn't upcoming event than set free next 8 hours
                 Calendar date = Calendar.getInstance();
                 long t = date.getTimeInMillis();
                 Date hour = new Date(t + 8 * HOUR);
                 representation = new RoomRepresentation(room.roomID, room.name, room.occupied, hour, hour, favorite);
             }
-
             result.add(representation);
         }
         return result;
@@ -90,12 +97,13 @@ public class RoomServiceImplementation implements RoomService
     }
 
     @Override
-    public Room findRoom(String id) {
+    public Room findRoom(String id)
+    {
         return roomRepository.findByRoomID(id);
     }
 
     @Override
-    public void makeRoomOcupied(String id)
+    public void makeRoomOccupied(String id)
     {
         Room room = roomRepository.findByRoomID(id);
         room.setOccupied(true);
@@ -103,7 +111,7 @@ public class RoomServiceImplementation implements RoomService
     }
 
     @Override
-    public void makeRoomUnocupied(String id)
+    public void makeRoomUnoccupied(String id)
     {
         Room room = roomRepository.findByRoomID(id);
         room.setOccupied(false);
@@ -136,21 +144,20 @@ public class RoomServiceImplementation implements RoomService
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
-                makeRoomOcupied(id);
+                makeRoomOccupied(id);
             }
         }, startTime);
         timer.schedule(new TimerTask() {
             public void run() {
-                makeRoomUnocupied(id);
+                makeRoomUnoccupied(id);
             }
         }, endTime);
     }
 
     @Override
-    public Term getNextTerm(String id)
+    public Term getNextTerm(Room room)
     {
-        Room room = roomRepository.findByRoomID(id);
-            List<Term> terms = termRepository.findByRoomAndTermID_StartDateGreaterThanOrderByTermID(room, new Date());
+        List<Term> terms = termRepository.findByRoomAndTermID_StartDateGreaterThanOrderByTermID(room, new Date());
         if(!terms.isEmpty())
         {
             return terms.get(0);
@@ -159,9 +166,8 @@ public class RoomServiceImplementation implements RoomService
     }
 
     @Override
-    public Term getCurentTerm(String id)
+    public Term getCurrentTerm(Room room)
     {
-        Room room = roomRepository.findByRoomID(id);
         Term term = termRepository.findByRoomAndTermID_StartDateLessThanEqualAndTermID_EndDateGreaterThanEqual(room, new Date(), new Date());
         return term;
     }
@@ -183,8 +189,8 @@ public class RoomServiceImplementation implements RoomService
     public RoomDetailsRepresentation getRoomDetails(String query, String username)
     {
         RoomDetailsRepresentation roomDetailsRepresentation = new RoomDetailsRepresentation();
-        Room room = roomRepository.findByRoomID(query);
-        User user = userRepository.findByUsername(username);
+        Room room = findRoom(query);
+        User user = userService.findUser(username);
         Term term1;
 
         roomDetailsRepresentation.setFavorite(user.getFavorites().containsKey(room.getRoomID()));
@@ -192,9 +198,9 @@ public class RoomServiceImplementation implements RoomService
 
         if(room.getOccupied())
         {
-            term1 = getCurentTerm(room.getRoomID());
+            term1 = getCurrentTerm(room);
         }else {
-            term1 = getNextTerm(room.getRoomID());
+            term1 = getNextTerm(room);
         }
 
         if(term1 != null)

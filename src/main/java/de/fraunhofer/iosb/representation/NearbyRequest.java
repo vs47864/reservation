@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class NearbyRequest
 {
 
-    private ArrayList<String> ids;
+    private ArrayList<NearbyRoom> ids;
 
-    public NearbyRequest(ArrayList<String> ids) {
+    public NearbyRequest(ArrayList<NearbyRoom> ids) {
         this.ids = ids;
     }
 
@@ -21,11 +21,11 @@ public class NearbyRequest
                 '}';
     }
 
-    public ArrayList<String> getIds() {
+    public ArrayList<NearbyRoom> getIds() {
         return ids;
     }
 
-    public void setIds(ArrayList<String> ids) {
+    public void setIds(ArrayList<NearbyRoom> ids) {
         this.ids = ids;
     }
 }
