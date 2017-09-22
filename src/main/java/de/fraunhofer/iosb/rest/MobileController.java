@@ -78,7 +78,6 @@ public class MobileController
         }
     }
 
-    //TODO add distance
     @RequestMapping(value = "/nearby", method = RequestMethod.POST)
     public List<RoomRepresentation> nearbyRooms(@RequestBody NearbyRequest nearbyRequest, Principal principal)
     {

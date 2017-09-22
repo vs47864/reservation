@@ -1,10 +1,13 @@
 package de.fraunhofer.iosb.entity;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Room {
@@ -17,7 +20,8 @@ public class Room {
     @Id
     public String roomID;
 
-    public List<String> bleIds = new ArrayList<>();
+    @ElementCollection(targetClass=String.class)
+    public Set<String> bleIds = new HashSet<>();
 
     public Boolean occupied = false;
 
@@ -69,5 +73,13 @@ public class Room {
     }
     public List<Term> getTerms() {
         return terms;
+    }
+
+    public Set<String> getBleIds() {
+        return bleIds;
+    }
+
+    public void setBleIds(Set<String> bleIds) {
+        this.bleIds = bleIds;
     }
 }

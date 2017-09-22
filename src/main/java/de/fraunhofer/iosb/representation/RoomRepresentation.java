@@ -1,6 +1,8 @@
 package de.fraunhofer.iosb.representation;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RoomRepresentation
 {
@@ -9,6 +11,10 @@ public class RoomRepresentation
     private String name;
 
     private String roomID;
+
+    private String bleId;
+
+    private Set<String> bleIds = new HashSet<>();
 
     private boolean occupied;
 
@@ -74,5 +80,21 @@ public class RoomRepresentation
 
     public void setUntil(Date until) {
         this.until = until;
+    }
+
+    public String getBleId() {
+        return bleId;
+    }
+
+    public void setBleId(String bleId) {
+        this.bleId = bleId;
+    }
+
+    public Set<String> getBleIds() {
+        return bleIds;
+    }
+
+    public void setBleIds(Set<String> bleIds) {
+        this.bleIds = bleIds;
     }
 }

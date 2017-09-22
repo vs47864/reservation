@@ -124,6 +124,7 @@ public class UserServiceImplementation implements UserService
                 if(term != null)
                 {
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), true);
+                    representation.setBleIds(room.getBleIds());
                 }
             }else
             {
@@ -131,6 +132,7 @@ public class UserServiceImplementation implements UserService
                 if(term != null)
                 {
                     representation = new RoomRepresentation(room.roomID, room.name, room.occupied, term.getTermID().getStartDate(), term.getTermID().getEndDate(), true);
+                    representation.setBleIds(room.getBleIds());
                 }
             }
 
@@ -141,6 +143,7 @@ public class UserServiceImplementation implements UserService
                 long t = date.getTimeInMillis();
                 Date hour = new Date(t + 8 * HOUR);
                 representation = new RoomRepresentation(room.roomID, room.name, room.occupied, hour, hour, true);
+                representation.setBleIds(room.getBleIds());
             }
 
             result.add(representation);
@@ -165,7 +168,7 @@ public class UserServiceImplementation implements UserService
     @Override
     public List<UserRepresentation> getQueryResponse(String query)
     {
-        List<User> users =repo.findUsersByNameContainsOrLastnameContains(query, query);
+        List<User> users =repo.findUsersByNameContainingIgnoreCaseOrLastnameContainingIgnoreCase(query, query);
 
         List<UserRepresentation> userRepresentations = new ArrayList<>();
         for (User user : users)

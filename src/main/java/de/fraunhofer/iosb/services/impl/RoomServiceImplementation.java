@@ -32,18 +32,18 @@ public class RoomServiceImplementation implements RoomService
     @Override
     public List<RoomRepresentation> getListOfRooms(NearbyRequest request, User user)
     {
-        List<RoomRepresentation> result = new ArrayList<>();
+        Map<String, RoomRepresentation> roomRepositoryHashMap = new HashMap<>();
+        Map<String, Double> roomDistance = new HashMap<>();
 
         for (NearbyRoom nearbyRoom: request.getIds())
         {
             String id = nearbyRoom.getId();
-            boolean favorite = user.getFavorites().containsKey(id);
-            Room room = roomRepository.findByRoomID(id);
+            Room room = roomRepository.findByBleIds(id);
             if(room == null)
             {
                 continue;
             }
-
+            boolean favorite = user.getFavorites().containsKey(room.getRoomID());
             Term term;
             RoomRepresentation representation = new RoomRepresentation();
 
@@ -71,9 +71,23 @@ public class RoomServiceImplementation implements RoomService
                 Date hour = new Date(t + 8 * HOUR);
                 representation = new RoomRepresentation(room.roomID, room.name, room.occupied, hour, hour, favorite);
             }
-            result.add(representation);
+            if (roomDistance.containsKey(room.getRoomID()))
+            {
+                if(roomDistance.get(room.getRoomID()) > nearbyRoom.getDistance())
+                {
+                    representation.setBleId(id);
+                    roomDistance.put(room.getRoomID(), nearbyRoom.getDistance());
+                    roomRepositoryHashMap.put(room.getRoomID(), representation);
+                }
+            }
+            else
+            {
+                roomDistance.put(room.getRoomID(), nearbyRoom.getDistance());
+                representation.setBleId(id);
+                roomRepositoryHashMap.put(room.getRoomID(), representation);
+            }
         }
-        return result;
+        return new ArrayList<>(roomRepositoryHashMap.values());
     }
 
     public Pair<Date, Date> parseDates(String startTime, String endTime, String date)
@@ -175,7 +189,7 @@ public class RoomServiceImplementation implements RoomService
     @Override
     public List<UserRepresentation> getQueryResponse(String query)
     {
-        List<Room> rooms =roomRepository.findRoomsByNameContains(query);
+        List<Room> rooms =roomRepository.findRoomsByNameContainingIgnoreCase(query);
         List<UserRepresentation> userRepresentations = new ArrayList<>();
         for (Room room : rooms)
         {

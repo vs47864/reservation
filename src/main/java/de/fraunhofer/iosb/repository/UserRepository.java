@@ -11,5 +11,5 @@ public interface UserRepository extends CrudRepository<User, String>
     User findByToken(String token);
     User findByNfccode(String NFCCode);
 
-    List<User> findUsersByNameContainsOrLastnameContains(String query, String query1);
+    List<User> findUsersByNameContainingIgnoreCaseOrLastnameContainingIgnoreCase(String query, String query1);
 }

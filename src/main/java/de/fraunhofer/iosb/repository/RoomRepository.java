@@ -8,5 +8,6 @@ import java.util.List;
 public interface RoomRepository extends CrudRepository<Room, String>
 {
     Room findByRoomID(String roomID);
-    List<Room> findRoomsByNameContains(String query);
+    List<Room> findRoomsByNameContainingIgnoreCase(String query);
+    Room findByBleIds(String bleId);
 }
