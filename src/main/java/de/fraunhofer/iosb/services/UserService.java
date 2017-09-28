@@ -35,4 +35,6 @@ public interface UserService
     UserDetailsRepresentation getUserDetails(String id);
 
     User getUserByNFC(String nfcCode);
+
+    Iterable<User> findAllInRoom(String id);
 }

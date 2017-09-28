@@ -34,7 +34,7 @@ public class AdminController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String begin() {
-        return "index";
+        return "redirect:/web";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -60,8 +60,4 @@ public class AdminController {
         }
     }
 
-    @RequestMapping(value = "/web", method = RequestMethod.GET)
-    public String Index() {
-        return "index";
-    }
 }

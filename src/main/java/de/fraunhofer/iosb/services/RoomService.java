@@ -32,4 +32,12 @@ public interface RoomService
     List<UserRepresentation> getQueryResponse(String query);
 
     RoomDetailsRepresentation getRoomDetails(String query, String username);
+
+    Iterable<Room> findAll();
+
+    void delete(String id);
+
+    boolean notExists(String roomID);
+
+    void newRoom(Room room);
 }

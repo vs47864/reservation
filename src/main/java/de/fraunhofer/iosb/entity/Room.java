@@ -45,6 +45,11 @@ public class Room {
         this.token = token;
     }
 
+    public Room(String name, String token) {
+        this.name = name;
+        this.token = token;
+    }
+
     public String getRoomID() {
         return roomID;
     }

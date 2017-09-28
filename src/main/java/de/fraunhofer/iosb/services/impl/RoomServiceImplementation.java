@@ -1,18 +1,26 @@
 package de.fraunhofer.iosb.services.impl;
 
+import de.fraunhofer.iosb.Constants;
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
+import de.fraunhofer.iosb.ilt.sta.ServiceFailureException;
+import de.fraunhofer.iosb.ilt.sta.model.Location;
+import de.fraunhofer.iosb.ilt.sta.model.Thing;
+import de.fraunhofer.iosb.ilt.sta.service.SensorThingsService;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.TermRepository;
 import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.RoomService;
 import de.fraunhofer.iosb.services.UserService;
 import javafx.util.Pair;
+import org.geojson.Point;
 import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 @Service
@@ -239,4 +247,52 @@ public class RoomServiceImplementation implements RoomService
         return roomDetailsRepresentation;
     }
 
+    @Override
+    public Iterable<Room> findAll()
+    {
+        return roomRepository.findAll();
+    }
+
+    @Override
+    public void delete(String id) {
+        roomRepository.delete(id);
+    }
+
+    @Override
+    public boolean notExists(String roomID)
+    {
+        if(roomRepository.findByRoomID(roomID) != null)
+            return false;
+        return true;
+    }
+
+    @Override
+    public void newRoom(Room room)
+    {
+        SensorThingsService service = null;
+        try {
+            service = Constants.createService();
+        } catch (MalformedURLException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        Thing thing = new Thing();
+        thing.setName(room.getRoomID());
+        thing.setDescription(room.getName());
+
+        Location location = new Location();
+        location.setName("location name 1");
+        location.setDescription("location 1");
+        location.setLocation(new Point(-117.05, 51.05));
+        location.setEncodingType("application/vnd.geo+json");
+        thing.getLocations().add(location);
+
+        try {
+            service.create(thing);
+        } catch (ServiceFailureException e) {
+            e.printStackTrace();
+        }
+
+        room.setRoomID(thing.getId()+"");
+    }
 }

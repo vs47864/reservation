@@ -199,4 +199,17 @@ public class UserServiceImplementation implements UserService
     {
         return repo.findByNfccode(nfcCode);
     }
+
+    @Override
+    public Iterable<User> findAllInRoom(String id)
+    {
+        List<User> userIterable= new ArrayList<>();
+        for(User user:repo.findAll()){
+            if(user.getCurentRoom()!=null){
+                if(user.getCurentRoom().getRoomID().equals(id))
+                    userIterable.add(user);
+            }
+        }
+        return userIterable;
+    }
 }
