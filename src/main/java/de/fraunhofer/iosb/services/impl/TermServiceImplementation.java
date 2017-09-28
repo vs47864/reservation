@@ -72,10 +72,10 @@ public class TermServiceImplementation implements TermService
         List<UserRepresentation> userRepresentations = new ArrayList<>();
         for (User user : term1.getUsers())
         {
-            UserRepresentation userRepresentation = new UserRepresentation(user.getName() + user.lastname, user.username);
+            UserRepresentation userRepresentation = new UserRepresentation(user.getName(), user.username);
             userRepresentations.add(userRepresentation);
         }
-        UserRepresentation initUser = new UserRepresentation(term1.getUser().getName() +" "+ term1.getUser().lastname, term1.getUser().getUsername());
+        UserRepresentation initUser = new UserRepresentation(term1.getUser().getName(), term1.getUser().getUsername());
         return new TermDetailsResponse(term, initUser, userRepresentations);
     }
 }

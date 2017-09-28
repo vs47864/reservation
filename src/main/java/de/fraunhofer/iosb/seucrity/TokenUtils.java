@@ -29,7 +29,6 @@ public class TokenUtils
     }
 
     public boolean validateToken(String authToken, UserDetails userDetails) {
-        // FEATURE za sada token nema valjanost to treba napraviti u budućnosti
         return true;
     }
 }

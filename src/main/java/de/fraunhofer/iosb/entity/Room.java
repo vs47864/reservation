@@ -4,10 +4,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.net.URI;
+import java.util.*;
 
 @Entity
 public class Room {
@@ -22,6 +20,9 @@ public class Room {
 
     @ElementCollection(targetClass=String.class)
     public Set<String> bleIds = new HashSet<>();
+
+    @ElementCollection(targetClass=Long.class)
+    public Map<String, Long> bleDataStream= new HashMap<>();
 
     public Boolean occupied = false;
 
@@ -81,5 +82,13 @@ public class Room {
 
     public void setBleIds(Set<String> bleIds) {
         this.bleIds = bleIds;
+    }
+
+    public Map<String, Long> getBleDataStream() {
+        return bleDataStream;
+    }
+
+    public void setBleDataStream(Map<String, Long> bleDataStream) {
+        this.bleDataStream = bleDataStream;
     }
 }

@@ -9,9 +9,12 @@ import de.fraunhofer.iosb.seucrity.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 @Service
@@ -29,7 +32,9 @@ public class LoginServiceImplementation implements LoginService
         if(user == null)
             return false;
 
-        if(!(user.getPassword().equals(password)))
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        if(!passwordEncoder.matches(password, user.getPassword()))
             return false;
 
         return true;
@@ -55,6 +60,11 @@ public class LoginServiceImplementation implements LoginService
     @Transactional
     public String createToken(User user)
     {
+        if(user.getToken() != null)
+        {
+            return user.getToken();
+        }
+
         String token = UUID.randomUUID().toString();
 
         while(repo.findByToken(token) != null)
@@ -78,4 +88,5 @@ public class LoginServiceImplementation implements LoginService
         }
         return false;
     }
+
 }

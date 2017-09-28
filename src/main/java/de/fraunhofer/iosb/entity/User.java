@@ -28,9 +28,6 @@ public class User
     @NotNull
     public String name;
 
-    @NotNull
-    public String lastname;
-
     @Column(unique=true)
     public String nfccode;
 
@@ -53,22 +50,19 @@ public class User
     @ManyToMany
     private Map<String, Room> favorites = new HashMap<>();
 
-    public User(String username, String password, String name, String lastname, String email, String number) {
+    public User(String username, String password, String name, String email, String number) {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.lastname = lastname;
         this.email = email;
         this.number = number;
     }
 
-    public User(String username, String password, String token, String name, String lastname,
-                String email, String number) {
+    public User(String username, String password, String token, String name, String email, String number) {
         this.username = username;
         this.password = password;
         this.token = token;
         this.name = name;
-        this.lastname = lastname;
         this.email = email;
         this.number = number;
     }
@@ -114,14 +108,6 @@ public class User
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getEmail() {

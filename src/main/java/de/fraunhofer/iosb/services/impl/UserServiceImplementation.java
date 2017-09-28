@@ -37,7 +37,7 @@ public class UserServiceImplementation implements UserService
 
         for (User user : repo.findAll())
         {
-            UserRepresentation userRepresentation = new UserRepresentation(user.getLastname()+" "+user.getName(), user.getUsername());
+            UserRepresentation userRepresentation = new UserRepresentation(user.getName(), user.getUsername());
             userRepresentations.add(userRepresentation);
         }
         return userRepresentations;
@@ -168,12 +168,13 @@ public class UserServiceImplementation implements UserService
     @Override
     public List<UserRepresentation> getQueryResponse(String query)
     {
-        List<User> users =repo.findUsersByNameContainingIgnoreCaseOrLastnameContainingIgnoreCase(query, query);
+
+        List<User> users =repo.findUsersByNameContainingIgnoreCase(query);
 
         List<UserRepresentation> userRepresentations = new ArrayList<>();
         for (User user : users)
         {
-            UserRepresentation userRepresentation = new UserRepresentation(user.getLastname()+" "+user.getName(), user.getUsername());
+            UserRepresentation userRepresentation = new UserRepresentation(user.getName(), user.getUsername());
             userRepresentations.add(userRepresentation);
         }
         return userRepresentations;
@@ -187,7 +188,7 @@ public class UserServiceImplementation implements UserService
         UserDetailsRepresentation userDetailsRepresentation = new UserDetailsRepresentation();
         userDetailsRepresentation.setEmail(user.getEmail());
         userDetailsRepresentation.setPhoneNumber(user.getNumber());
-        userDetailsRepresentation.setName(user.getName()+" "+user.getLastname());
+        userDetailsRepresentation.setName(user.getName());
         userDetailsRepresentation.setTerms(getTerms(id));
 
         return userDetailsRepresentation;

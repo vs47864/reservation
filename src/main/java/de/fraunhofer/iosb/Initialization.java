@@ -3,9 +3,14 @@ package de.fraunhofer.iosb;
 import de.fraunhofer.iosb.entity.Role;
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
+import de.fraunhofer.iosb.ilt.sta.ServiceFailureException;
+import de.fraunhofer.iosb.ilt.sta.model.*;
+import de.fraunhofer.iosb.ilt.sta.model.ext.UnitOfMeasurement;
+import de.fraunhofer.iosb.ilt.sta.service.SensorThingsService;
 import de.fraunhofer.iosb.repository.RoleRepository;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.UserRepository;
+import org.geojson.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +18,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class Initialization  implements CommandLineRunner
@@ -22,7 +34,7 @@ public class Initialization  implements CommandLineRunner
     private RoomRepository repoRoom;
     private UserRepository userRepo;
     private RoleRepository roleRepo;
-
+    private SensorThingsService service;
 
     @Autowired
     public Initialization(RoomRepository repoRoom, UserRepository userRepo, RoleRepository roleRepo)
@@ -40,7 +52,7 @@ public class Initialization  implements CommandLineRunner
         r18.getBleIds().add("BEACON 39:8F:8E");
         repoRoom.save(r18);
 
-        Room r19 = new Room("BEACON 39:8C:22", "HIWI 2", "token");
+        Room r19 = new Room("hiwi_2", "HIWI 2", "token");
         r19.getBleIds().add("BEACON 39:8C:22");
         repoRoom.save(r19);
 
@@ -50,20 +62,20 @@ public class Initialization  implements CommandLineRunner
         Room all = new Room("all", "http://localhost:8080/rooms/all", "neki token");
         repoRoom.save(all);
 
-        User userAdmin = new User("admin@fer.hr", "21232f297a57a5a743894a0e4a801fc3", "Admin", "Admin", "admin@fer.hr", "0");
+        User userAdmin = new User("admin@fer.hr", "$2a$06$/TmUi.A5awl8wBaqkjbHtuInaEGn8ly4onEwPkK/dBy3YK6MXWebq", "Admin Admin", "admin@fer.hr", "0");
         userRepo.save(userAdmin);
 
-        User userAdmin1 = new User("admin1@fer.hr", "e00cf25ad42683b3df678c61f42c6bda", "Viseslav", "Admin", "admin@fer.hr", "0");
+        User userAdmin1 = new User("admin1@fer.hr", "$2a$10$llq3McqZc.pfb3QRCUty0ulvB1J73n8h6gC85qV1EgWTgwMKFe0K2", "Viseslav Admin", "admin@fer.hr", "0");
         userAdmin1.getFavorites().put(r22.getRoomID(), r22);
         userAdmin1.setToken("e67a3e52-24d8-44cc-bec7-5bd2371c55d9");
         userRepo.save(userAdmin1);
 
-        User user18 = new User("user18", "user18", "User18", "User18", "user18@fer.hr", "1");
+        User user18 = new User("user18", "user18", "User18 User18", "user18@fer.hr", "1");
         user18.setToken("1fa5fbc4-83b7-49cf-b40b-5cc61a3cf657");
         user18.setCurentRoom(r18);
         userRepo.save(user18);
 
-        User user22 = new User("user22", "user22", "User22", "User22", "user22@fer.hr", "2");
+        User user22 = new User("user22", "user22", "User22 User22", "user22@fer.hr", "2");
         user22.setNfccode("12345678");
         user22.setCurentRoom(r18);
         userRepo.save(user22);
@@ -74,18 +86,57 @@ public class Initialization  implements CommandLineRunner
         roleAdmin.setUser(userAdmin1);
         roleRepo.save(roleAdmin);
 
-        addUserForRoom(r18, "bb46865", "bilokoji", "Boris", "Belaj", "boris.belaj@fer.hr", "3");
-        addUserForRoom(r18, "luka", "svejedno", "Luka", "Ušalj", "luka.usalj@fer.hr", "4");
-        addUserForRoom(r18, "vatroslav", "neznam", "Vatroslav", "Bajt", "vatroslav.bajt@fer.hr", "5");
-        addUserForRoom(r18, "mario", "kusek", "Mario", "Kušek", "mario.kusek@fer.hr", "6");
-        addUserForRoom(r18, "marko", "pavelic", "Marko", "Pavelić", "marko.pavelic@fer.hr", "7");
+        addUserForRoom(r18, "bb46865", "bilokoji", "Boris Belaj", "boris.belaj@fer.hr", "3");
+        addUserForRoom(r18, "luka", "svejedno", "Luka Ušalj", "luka.usalj@fer.hr", "4");
+        addUserForRoom(r18, "vatroslav", "neznam", "Vatroslav Bajt", "vatroslav.bajt@fer.hr", "5");
+        addUserForRoom(r18, "mario ", "kusek", "Mario Kušek", "mario.kusek@fer.hr", "6");
+        addUserForRoom(r18, "marko", "pavelic", "Marko Pavelić", "marko.pavelic@fer.hr", "7");
 
+        service = Constants.createService();
+        Constants.deleteAll(service);
+
+        for(Room room : repoRoom.findAll())
+        {
+            addToSensorThingsServer(room);
+            repoRoom.save(room);
+        }
     }
 
-    private void addUserForRoom(Room room, String username, String password, String firstName, String lastName, String email, String id) {
+    private void addUserForRoom(Room room, String username, String password, String name, String email, String id) {
         LOG.info("Initialized user '{}' pass '{}' with open roll for room {}", username, password, room.getRoomID());
-        User userBB = new User(username, password, firstName, lastName, email, id);
+        User userBB = new User(username, password, name, email, id);
         userRepo.save(userBB);
     }
+
+    private void addToSensorThingsServer(Room room) throws URISyntaxException, ServiceFailureException, MalformedURLException
+    {
+        Map<String, Long> bleBeaconMap = new HashMap<>();
+        Thing thing = new Thing();
+        thing.setName(room.getRoomID());
+        thing.setDescription(room.getName());
+
+        Location location = new Location();
+        location.setName("location name 1");
+        location.setDescription("location 1");
+        location.setLocation(new Point(-117.05, 51.05));
+        location.setEncodingType("application/vnd.geo+json");
+        thing.getLocations().add(location);
+
+        service.create(thing);
+        {
+            for(String ble : room.getBleIds())
+            {
+                UnitOfMeasurement um1 = new UnitOfMeasurement("Meter", "m", "http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html/Meter");
+                Datastream ds1 = new Datastream("datastream name 1", "datastream 1", "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement", um1);
+                ds1.setObservedProperty(new ObservedProperty("Proximity m", new URI("http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html/property"), "proximity"));
+                ds1.setSensor(new Sensor(ble, "Ble beacon of room", "application/pdf", "BLE proximity sensor"));
+                ds1.setThing(thing);
+                service.create(ds1);
+                bleBeaconMap.put(ble, ds1.getId());
+            }
+        }
+        room.setBleDataStream(bleBeaconMap);
+    }
+
 
 }

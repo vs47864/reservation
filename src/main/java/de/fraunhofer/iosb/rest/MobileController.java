@@ -2,6 +2,7 @@ package de.fraunhofer.iosb.rest;
 
 import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.User;
+import de.fraunhofer.iosb.ilt.sta.ServiceFailureException;
 import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.LoginService;
 import de.fraunhofer.iosb.services.RoomService;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URISyntaxException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,13 +42,16 @@ public class MobileController
 
     private TermService termService;
 
+    private SensorServerController sensorServerController;
+
     @Autowired
-    public MobileController(LoginService loginService, RoomService roomService, UserService userService, TermService termService)
+    public MobileController(LoginService loginService, RoomService roomService, UserService userService, TermService termService, SensorServerController sensorServerController)
     {
         this.userService = userService;
         this.loginService = loginService;
         this.roomService = roomService;
         this.termService = termService;
+        this.sensorServerController = sensorServerController;
     }
 
     /**
@@ -82,6 +87,13 @@ public class MobileController
     public List<RoomRepresentation> nearbyRooms(@RequestBody NearbyRequest nearbyRequest, Principal principal)
     {
         User user = userService.findUser(principal.getName());
+        try {
+            sensorServerController.addDistanceMeasurement(nearbyRequest.getIds(), user);
+        } catch (ServiceFailureException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         return roomService.getListOfRooms(nearbyRequest, user);
     }
 

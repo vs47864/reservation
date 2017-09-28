@@ -1,6 +1,5 @@
 package de.fraunhofer.iosb.seucrity;
 
-import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.services.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFilter {
+public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFilter
+{
     private static final Logger LOG = LoggerFactory.getLogger(AuthenticationTokenFilter.class);
     private final String tokenHeader = "Authorization";
 

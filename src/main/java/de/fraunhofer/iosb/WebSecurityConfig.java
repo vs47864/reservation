@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
@@ -30,7 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
-                .userDetailsService(this.userDetailsService);
+                .userDetailsService(this.userDetailsService)
+                .passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -46,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         return authenticationTokenFilter;
     }
 
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -54,10 +62,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 // mobile
                 .antMatchers("/mobile/login").permitAll()
                 .antMatchers("/mobile/**").authenticated()
-                .antMatchers("/mobile/admin/").hasAuthority("admin");
+                //web amin
+                .antMatchers("/web/**").hasAuthority("admin")
+                .antMatchers("/").hasAuthority("admin")
+                // other requests
+                .antMatchers("/**").permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/login")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .defaultSuccessUrl("/web")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .invalidateHttpSession(true)
+                .permitAll();
 
         // Custom token based authentication
-        httpSecurity.addFilterBefore(
-                authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }
 }
