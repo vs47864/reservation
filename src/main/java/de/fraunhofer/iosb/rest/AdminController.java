@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Viseslav Sako
  */
+
 @Controller
 public class AdminController {
     @Autowired

@@ -1,0 +1,234 @@
+@CHARSET "UTF-8";
+body { padding-top: 70px; }
+
+#header1{
+	Background:#199C7D;
+	
+}
+#menu-link{
+	color: #ffffff;
+}
+
+#header{
+	Background:#199C7D;
+}
+
+#sidebar{
+		Background:#199C7D;
+		color: #ffffff;		
+}
+ul
+{
+    list-style-type: none;
+}
+
+.jumbotron{
+		Background:#199C7D;
+}
+#naslov_liste
+{
+	font-size:20px;
+}
+
+.table{
+Background:#ffffff;}
+
+#new-user
+{
+	text-align: center;	
+}
+#new-user-btn
+{
+	color:#ffffff;
+	font-size:20px;
+	text-align: center;	
+}
+
+#content{
+
+float:right;
+}
+
+#tlocrt{
+	position: absolute;
+    top: 33%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+    Background:#199C7D;
+    max-width: 100%;
+    height: auto;
+}
+
+#tlocrtdiv{
+	max-width: 80%;
+    height: auto;
+}
+
+#tlocrt-h{
+	position: absolute;
+    top: 10%;
+    left: 21%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+    Background:#199C7D;
+    color: #ffffff;
+}
+
+#details-rooms
+{
+	position: absolute;
+	left: 21%;
+	width:865px;
+    height:100px;
+}
+
+th{
+	Background:#199C7D;
+	Color:#ffffff;
+}
+
+#change{
+	position: absolute;
+    top: 27%;
+    left: 50%;
+    color:#ffffff;
+	font-size:20px;
+	text-align: center;	
+}
+
+#edit{
+	position: absolute;
+    top: 35%;
+    left: 35%;
+}
+
+.form-style-4{
+    width: 450px;
+    font-size: 16px;
+    background: #199C7D;
+    padding: 30px 30px 15px 30px;
+    border: 5px solid #199C7D;
+}
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button],
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 textarea,
+.form-style-4 label
+{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    color: #fff;
+
+}
+.form-style-4 label {
+    display:block;
+    margin-bottom: 10px;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    float: left;
+    width: 150px;
+}
+.form-style-4 input[type=text],
+.form-style-4 input[type=email]
+{
+    background: #ffffff;;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+    font-style: italic;
+    color: #000000;
+    
+}
+.form-style-4 textarea{
+    font-style: italic;
+    padding: 0px 0px 0px 0px;
+    background: #ffffff;
+    outline: none;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    overflow: hidden;
+    resize:none;
+    height:20px;
+}
+
+.form-style-4 textarea:focus,
+.form-style-4 input[type=text]:focus,
+.form-style-4 input[type=email]:focus,
+.form-style-4 input[type=email] :focus
+{
+    border-bottom: 1px dashed #D9FFA9;
+}
+
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button]{
+    background: #576E86;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    color: #A8BACE;
+}
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover{
+background: #394D61;
+}
+
+#new{
+	position: absolute;
+    top: 53%;
+    left: 35%;
+}
+
+#usrdetails{
+	position: absolute;
+	width:400px;
+    height:100px;
+   	left: 20%;
+}
+
+#edituser{
+	position: absolute;
+	top:68%;
+	left: 32%;
+}
+
+#editt{
+	margin: 0 auto;
+}
+
+#editusr{
+	position: absolute;
+	top:15%;
+	left: 20%;
+}
+
+#tdf{
+	background: #199C7D;
+
+}
+
+#newusr{
+	position: relative;
+	left: 33%;
+}
+
+#newrole{
+	position: relative;
+	left: 33%;
+}
+#new-role
+{
+	text-align: center;	
+}
+
+#log
+{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+

@@ -47,12 +47,12 @@ public class Initialization  implements CommandLineRunner
     @Transactional
     public void run(String... args) throws Exception {
         Room r18 = new Room("hiwi_1", "HIWI 1", "token");
-        r18.getBleIds().add("BEACON 39:91:DB");
-        r18.getBleIds().add("BEACON 39:8F:8E");
+        r18.getBleIds().add("62834:31868");
+        r18.getBleIds().add("4D:53:2F:7B:28:D0");
         repoRoom.save(r18);
 
         Room r19 = new Room("hiwi_2", "HIWI 2", "token");
-        r19.getBleIds().add("BEACON 39:8C:22");
+        r19.getBleIds().add("10655:42221");
         repoRoom.save(r19);
 
         Room r22 = new Room("C8-22", "http://localhost:8080/rooms/2", "neki token");
@@ -62,6 +62,7 @@ public class Initialization  implements CommandLineRunner
         repoRoom.save(all);
 
         User userAdmin = new User("admin@fer.hr", "$2a$06$/TmUi.A5awl8wBaqkjbHtuInaEGn8ly4onEwPkK/dBy3YK6MXWebq", "Admin Admin", "admin@fer.hr", "0");
+        userAdmin.getFavorites().put(r22.getRoomID(), r22);
         userRepo.save(userAdmin);
 
         User userAdmin1 = new User("admin1@fer.hr", "$2a$10$llq3McqZc.pfb3QRCUty0ulvB1J73n8h6gC85qV1EgWTgwMKFe0K2", "Viseslav Admin", "admin@fer.hr", "0");

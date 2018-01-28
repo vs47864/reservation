@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: de.fraunhofer.iosb.ilt:SensorThingsClient:0.13">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.fraunhofer.iosb.ilt/SensorThingsClient/0.13/2dd7965180a2741ec76d6f6a7a344713b7d77c42/SensorThingsClient-0.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.fraunhofer.iosb.ilt/SensorThingsClient/0.13/5921fa2c4076e59c853401d0e7f5568c291328fd/SensorThingsClient-0.13-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

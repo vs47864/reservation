@@ -61,25 +61,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .authorizeRequests()
                 // mobile
                 .antMatchers("/mobile/login").permitAll()
-                .antMatchers("/mobile/**").authenticated()
+                .antMatchers("/mobile/**").authenticated();
                 //web amin
-                .antMatchers("/web/**").hasAuthority("admin")
-                .antMatchers("/").hasAuthority("admin")
-                // other requests
-                .antMatchers("/**").permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/login")
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .defaultSuccessUrl("/web")
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)
-                .permitAll();
+//                .antMatchers("/web/**").hasAuthority("admin")
+//                .antMatchers("/").hasAuthority("admin")
+//                // other requests
+//                .antMatchers("/**").permitAll()
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/login")
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .defaultSuccessUrl("/web")
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/login")
+//                .invalidateHttpSession(true)
+//                .permitAll();
 
         // Custom token based authentication
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
