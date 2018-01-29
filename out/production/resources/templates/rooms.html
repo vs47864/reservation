@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Rooms</title>
+		<link th:href="@{https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet"/> 
+		<link rel="stylesheet"  href="../css/style.css"/>
+</head>
+<body>
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+			<tr><th>Name</th>
+				<th>Actions</th>
+			</tr>
+			<tr th:each="room : ${rooms}">
+				<td th:text="${room.name}">
+				</td>
+				<td>
+					<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('RC#roomDetails').arg(0,room.roomID)).build()}">details</a>
+					<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('RC#roomDetails').arg(0,room.roomID)).build()}">edit</a>
+					<a role="button" class="btn btn-primary"  href="#" th:href="${(#mvc.url('RC#userInRoom').arg(0,room.roomID)).build()}">users</a>
+					<a role="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-warning" href="#" th:href="${(#mvc.url('RC#roomDelete').arg(0,room.roomID)).build()}">delete</a>
+				</td>
+			</tr>
+		</table>
+		<div id="new-user"><a role="button" class="btn btn-primary" id="new-user-btn" href="#new" data-toggle="collapse">New Room</a></div>
+	</div>
+
+
+	<div id="new" class="collapse">
+		<form class="form-style-4" role="form" th:object="${room}" th:action="${(#mvc.url('RC#newRoom')).build()}" method="post">
+			<div class="form-group">
+				<label for="room">Room:</label>
+				<input type="text" class="form-control" th:field="*{name}"/>
+			</div>
+			<div class="form-group">
+				<label for="token">Token:</label>
+				<input type="text" class="form-control" th:field="*{token}"/>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
+<script src="../js/popup.js"></script>
+</body>
+</html>
+

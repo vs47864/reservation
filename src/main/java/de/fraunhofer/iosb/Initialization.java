@@ -47,12 +47,12 @@ public class Initialization  implements CommandLineRunner
     @Transactional
     public void run(String... args) throws Exception {
         Room r18 = new Room("hiwi_1", "HIWI 1", "token");
-        r18.getBleIds().add("BEACON 39:91:DB");
-        r18.getBleIds().add("BEACON 39:8F:8E");
+        r18.getBleIds().add("10655:42221");
+        r18.getBleIds().add("62834:31868");
         repoRoom.save(r18);
 
         Room r19 = new Room("hiwi_2", "HIWI 2", "token");
-        r19.getBleIds().add("BEACON 39:8C:22");
+        r19.getBleIds().add("623:61687");
         repoRoom.save(r19);
 
         Room r22 = new Room("C8-22", "http://localhost:8080/rooms/2", "neki token");
@@ -91,14 +91,14 @@ public class Initialization  implements CommandLineRunner
         addUserForRoom(r18, "mario ", "kusek", "Mario Kušek", "mario.kusek@fer.hr", "6");
         addUserForRoom(r18, "marko", "pavelic", "Marko Pavelić", "marko.pavelic@fer.hr", "7");
 
-        service = Constants.createService();
-        Constants.deleteAll(service);
-
-        for(Room room : repoRoom.findAll())
-        {
-            addToSensorThingsServer(room);
-            repoRoom.save(room);
-        }
+//        service = Constants.createService();
+//        Constants.deleteAll(service);
+//
+//        for(Room room : repoRoom.findAll())
+//        {
+//            addToSensorThingsServer(room);
+//            repoRoom.save(room);
+//        }
     }
 
     private void addUserForRoom(Room room, String username, String password, String name, String email, String id) {
