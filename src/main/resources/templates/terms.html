@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet"  href="https//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<link rel="stylesheet"  href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
+<link rel="stylesheet"  href="../css/style.css"/>
+<link th:href="@{https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet"/> 
+<title>Logs</title>
+</head>
+<body>
+<script>
+	$(document).ready(function() {
+	    $('#logs').DataTable();
+	} );
+</script>
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+<div id="log">
+<table id="logs" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Room</th>
+                <th>User</th>
+                <th>Action</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Room</th>
+                <th>User</th>
+                <th>Action</th>
+                <th>Date</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr th:each="log : ${logs}">
+				<td th:text="${log.room}">
+				</td>
+				<td th:text="${log.user}">
+				</td>
+				<td th:text="${log.action}">
+				</td>
+				<td th:text="${log.date}">
+				</td>
+			</tr>
+        </tbody>
+    </table>
+		<div id="new-user"><a role="button" class="btn btn-primary" id="new-user-btn" href="/web/downloadCSV">Export</a></div>
+</div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</html>

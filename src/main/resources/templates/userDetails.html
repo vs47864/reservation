@@ -4,31 +4,30 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Users</title>
 		<link th:href="@{https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet"/> 
-		<link rel="stylesheet"  href="../css/style.css"/>
+		<link rel="stylesheet"  href="../../css/style.css"/>
+		<title>User details</title>
 </head>
 <body>
     <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
-    <div class="table-responsive">
-		<table class="table table-bordered table-hover"> 
-			<tr><th>Name</th>
-    			<th>Actions</th>
-    		</tr>
-			<tr th:each="user : ${users}">
-				<td th:text="${user.name}">
-				</td>
-				<td>
-				<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('UC#userDetails').arg(0,user.username)).build()}">details</a>
-				<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('UC#userDetails').arg(0,user.username)).build()}">edit</a>
-				<a onclick="return confirm('Are you sure you want to delete this item?');" role="button" class="btn btn-warning" href="#" th:href="${(#mvc.url('UC#userDelete').arg(0,user.username)).build()}">delete</a>
-				</td>
-			</tr>
+    <a role="button" class="btn btn-primary"  href="/web/users">&lt;-Go Back</a>
+	<div class="table-responsive">
+		<table id="usrdetails" class="table table-bordered table-hover">
+		<tbody>		
+			<tr><td id="tdf"><b>Username   :</b></td><td> <span th:text="${user.username}"></span></td></tr>
+			<tr><td id="tdf"><b>FirstName  :</b></td><td> <span th:text="${user.name}"></span></td></tr>
+			<tr><td id="tdf"><b>Password   :</b></td><td> <span th:text="${user.password}"></span></td></tr>
+			<tr><td id="tdf"><b>Token      :</b></td><td> <span th:text="${user.token}"></span></td></tr>
+			<tr><td id="tdf"><b>NFC        :</b> </td><td><span th:text="${user.nfccode}"></span></td></tr>
+			<tr><td id="tdf"><b>Email      :</b></td><td> <span th:text="${user.email}"></span></td></tr>
+			<tr><td id="tdf"><b>Number     :</b></td><td> <span th:text="${user.number}"></span></td></tr>
+			<tr><td id="tdf"><b>Curent Room:</b></td><td> <span th:text="${user.curentRoom}"></span></td></tr>
+			<tr><td colspan="2"  align="center"><a  id="editt"  role="button" class="btn btn-primary" href="#editusr" data-toggle="collapse">edit</a></td></tr>
+		</tbody>
 		</table>
-		<div id="new-user"><a role="button" class="btn btn-primary" id="new-user-btn" href="#newusr" data-toggle="collapse">New User</a></div>
 	</div>
-		<div id="newusr" class="collapse">
-				<form class="form-style-4" role="form" th:object="${user}" th:action="${(#mvc.url('UC#newUser')).build()}" method="post">
+		<div id="editusr" class="collapse">
+				<form class="form-style-4" role="form" th:object="${user}" th:action="${(#mvc.url('UC#userUpdate').arg(0,user.username)).build()}" method="post">
 					<div class="form-group">
 				    	<label for="room">Username:</label>
 				    	<input type="text" class="form-control" th:field="*{username}"/>
@@ -46,7 +45,7 @@
 				    	<input type="text" class="form-control" th:field="*{token}"/>
 				  	</div>
 				  	<div class="form-group">
-				    	<label for="pwd">NFC code:</label>
+				    	<label for="pwd">CardID:</label>
 				    	<input type="text" class="form-control" th:field="*{nfccode}"/>
 				  	</div>
 				  	<div class="form-group">

@@ -14,6 +14,7 @@ import de.fraunhofer.iosb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -59,7 +60,8 @@ public class UserServiceImplementation implements UserService
     }
 
     @Override
-    public User findUser(String name) {
+    public User findUser(String name)
+    {
         return repo.findByUsername(name);
     }
 
@@ -211,5 +213,41 @@ public class UserServiceImplementation implements UserService
             }
         }
         return userIterable;
+    }
+
+    @Override
+    public Iterable<User> findAll() {
+        return  repo.findAll();
+    }
+
+    @Override
+    public void delete(String id) {
+        repo.delete(id);
+    }
+
+    @Override
+    public boolean notexists(String username) {
+        if(repo.findOne(username) != null){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    @Override
+    @Transactional
+    public User save(User user) {
+        if(repo.findByUsername(user.getUsername())==null)
+            return repo.save(user);
+        else
+            throw new IllegalArgumentException("User with that username already exists");
+    }
+
+    @Override
+    @Transactional
+    public void update(User user, String id) {
+        repo.save(user);
+
     }
 }

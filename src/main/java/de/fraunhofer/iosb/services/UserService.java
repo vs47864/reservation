@@ -7,6 +7,7 @@ import de.fraunhofer.iosb.representation.TermsResponse;
 import de.fraunhofer.iosb.representation.UserDetailsRepresentation;
 import de.fraunhofer.iosb.representation.UserRepresentation;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -37,4 +38,16 @@ public interface UserService
     User getUserByNFC(String nfcCode);
 
     Iterable<User> findAllInRoom(String id);
+
+    Iterable<User> findAll();
+
+    void delete(String id);
+
+    boolean notexists(String username);
+
+    @Transactional
+    User save(User user);
+
+    @Transactional
+    void update(User user, String id);
 }
