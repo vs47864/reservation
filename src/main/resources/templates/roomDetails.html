@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Rooms</title>
+		<link th:href="@{https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet"/> 
+		<link rel="stylesheet"  href="../../css/style.css"/>
+</head>
+<body>
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+    <div class="container-fluid">
+      <div class="row">
+		    <div th:fragment="rooms" id="sidebar" class="col-md-2 nav-sidebar">
+				<a id="menu-link" href="#rooms" data-toggle="collapse"><h3>Rooms</h3></a>
+				<div id="rooms" class="collapse in">
+						<ul th:each="room : ${rooms}">
+							<li id="naslov_liste" th:text="${room.roomID}"></li>
+							<li class="btn-group" role="group">
+							<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('RC#roomDetails').arg(0,room.roomID)).build()}">details</a>
+							<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('RC#roomDetails').arg(0,room.roomID)).build()}">edit</a>
+							</li>
+							<li class="btn-group" role="group">
+							<a role="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-warning" href="#" th:href="${(#mvc.url('RC#roomDelete').arg(0,room.roomID)).build()}">delete</a>
+							</li>
+						</ul>
+				</div>
+			</div>
+			<div>
+				<table id="details-rooms" class="table table-bordered table-hover"> 
+					<tr><th>Room</th>
+		    			<th>Name</th>
+		    			<th>Occupied</th>
+						<th>BLE Ids</th>
+					</tr>
+		    		<tr>
+						<td th:text="${room.roomID}">
+						</td>
+						<td th:text="${room.name}">
+						</td>
+						<td th:text="${room.occupied}">
+						</td>
+							<!--<td th:each="ble, iterStat : ${room.bleIds}" th:text="!${iterStat.last} ? ${ble} + ',': ${ble}">-->
+						<td th:text="${room.bleIds}">
+						</td>
+						</tr>
+						<tr>
+						<td colspan="4" align="center"><a role="button" class="btn btn-primary" id="new-user-btn" href="#edit" data-toggle="collapse">Edit</a></td>
+						</tr>
+				</table>
+			</div>
+		<div id="edit" class="collapse">
+			<form class="form-style-4" role="form" th:object="${room}" th:action="${(#mvc.url('RC#roomUpdate').arg(0,room.roomID)).build()}" method="post">
+				<div class="form-group">
+			    	<label for="room">Room:</label>
+			    	<input type="text" class="form-control" th:field="*{name}"/>
+			  	</div>
+			  	<div class="form-group">
+			    	<label for="pwd">Token:</label>
+			    	<input type="text" class="form-control" th:field="*{token}"/>
+			  	</div>
+			  	<div class="form-group">
+			    	<label for="pwd">BLE:</label>
+			    	<input type="text" class="form-control" th:field="*{bleIds}"/>
+			  	</div>
+		  		<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		</div>
+	</div>
+	
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
+<script src="../js/popup.js"></script>
+</body>
+</html>
+

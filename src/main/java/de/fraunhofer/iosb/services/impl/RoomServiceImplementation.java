@@ -5,11 +5,12 @@ import de.fraunhofer.iosb.entity.Room;
 import de.fraunhofer.iosb.entity.Term;
 import de.fraunhofer.iosb.entity.User;
 import de.fraunhofer.iosb.ilt.sta.ServiceFailureException;
-import de.fraunhofer.iosb.ilt.sta.model.Location;
-import de.fraunhofer.iosb.ilt.sta.model.Thing;
+import de.fraunhofer.iosb.ilt.sta.model.*;
+import de.fraunhofer.iosb.ilt.sta.model.ext.UnitOfMeasurement;
 import de.fraunhofer.iosb.ilt.sta.service.SensorThingsService;
 import de.fraunhofer.iosb.repository.RoomRepository;
 import de.fraunhofer.iosb.repository.TermRepository;
+import de.fraunhofer.iosb.repository.UserRepository;
 import de.fraunhofer.iosb.representation.*;
 import de.fraunhofer.iosb.services.RoomService;
 import de.fraunhofer.iosb.services.UserService;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
@@ -36,6 +38,9 @@ public class RoomServiceImplementation implements RoomService
 
     @Autowired
     private TermRepository termRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<RoomRepresentation> getListOfRooms(NearbyRequest request, User user)
@@ -254,8 +259,29 @@ public class RoomServiceImplementation implements RoomService
     }
 
     @Override
-    public void delete(String id) {
-        roomRepository.delete(id);
+    public void delete(String id)
+    {
+        Room room = roomRepository.findByRoomID(id);
+        List<User> users = userRepository.findByCurentRoom(room);
+        for(User user: users)
+        {
+            user.setCurentRoom(null);
+        }
+        userRepository.save(users);
+        //TODO provjera je li unutra maknuti  sve i dodati  samo da se napravi pravi repo pozov
+
+        users = (List<User>) userRepository.findAll();
+        for(User user: users)
+        {
+            if(user.getFavorites().containsKey(room.getRoomID()))
+            {
+                user.getFavorites().remove(room.getRoomID());
+            }
+        }
+        userRepository.save(users);
+        List<Term> terms = termRepository.findByRoom(room);
+        termRepository.delete(terms);
+        roomRepository.delete(room);
     }
 
     @Override
@@ -269,6 +295,28 @@ public class RoomServiceImplementation implements RoomService
     @Override
     public void newRoom(Room room)
     {
+        try {
+            room.setRoomID(addToSensorThingsServer(room)+"");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (ServiceFailureException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        roomRepository.save(room);
+    }
+
+    @Override
+    public void update(Room room, String id)
+    {
+        room.setRoomID(id);
+        roomRepository.save(room);
+        //TODO UPDATING IN SENROT THINGS
+    }
+
+    private Long addToSensorThingsServer(Room room) throws URISyntaxException, ServiceFailureException, MalformedURLException
+    {
         SensorThingsService service = null;
         try {
             service = Constants.createService();
@@ -276,8 +324,9 @@ public class RoomServiceImplementation implements RoomService
             e.printStackTrace();
         }
 
+        Map<String, Long> bleBeaconMap = new HashMap<>();
         Thing thing = new Thing();
-        thing.setName(room.getRoomID());
+        thing.setName(room.getName());
         thing.setDescription(room.getName());
 
         Location location = new Location();
@@ -287,12 +336,21 @@ public class RoomServiceImplementation implements RoomService
         location.setEncodingType("application/vnd.geo+json");
         thing.getLocations().add(location);
 
-        try {
-            service.create(thing);
-        } catch (ServiceFailureException e) {
-            e.printStackTrace();
+        service.create(thing);
+        {
+            for(String ble : room.getBleIds())
+            {
+                UnitOfMeasurement um1 = new UnitOfMeasurement("Metar", "m", "http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html/Meter");
+                Datastream ds1 = new Datastream("datastream name 1", "datastream 1", "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement", um1);
+                ds1.setObservedProperty(new ObservedProperty("Proximity m", new URI("http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html/property"), "proximity"));
+                ds1.setSensor(new Sensor(ble, "Ble beacon of room", "application/pdf", "BLE proximity sensor"));
+                ds1.setThing(thing);
+                service.create(ds1);
+                bleBeaconMap.put(ble, ds1.getId());
+            }
         }
+        room.setBleDataStream(bleBeaconMap);
 
-        room.setRoomID(thing.getId()+"");
+        return thing.getId();
     }
 }

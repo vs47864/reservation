@@ -12,6 +12,6 @@ import java.util.List;
 public interface TermRepository extends CrudRepository<Term, TermId>
 {
     List<Term> findByRoomAndTermID_StartDateGreaterThanOrderByTermID(Room room, Date date);
-
+    List<Term> findByRoom(Room room);
     Term  findByRoomAndTermID_StartDateLessThanEqualAndTermID_EndDateGreaterThanEqual(Room room, Date date, Date date1);
 }

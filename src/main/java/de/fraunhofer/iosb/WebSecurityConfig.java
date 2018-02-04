@@ -81,6 +81,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .invalidateHttpSession(true)
                 .permitAll();
 
+        httpSecurity.headers().frameOptions().disable();
+
+
         // Custom token based authentication
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }

@@ -40,4 +40,6 @@ public interface RoomService
     boolean notExists(String roomID);
 
     void newRoom(Room room);
+
+    void update(Room room, String id);
 }

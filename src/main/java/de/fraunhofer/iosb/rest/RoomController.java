@@ -45,7 +45,7 @@ public class RoomController
     {
         //TODO obrisati povezane
         service.delete(id);
-        return "redirect:/web/rooms";
+        return "redirect:/web";
     }
 
 
@@ -69,4 +69,10 @@ public class RoomController
         return "curentusers";
     }
 
+    @RequestMapping(value = "/web/rooms/update/{id}", method = RequestMethod.POST)
+    public String roomUpdate(@PathVariable("id") String id, Room room)
+    {
+        service.update(room, id);
+        return "redirect:/web/rooms/" + id;
+    }
 }

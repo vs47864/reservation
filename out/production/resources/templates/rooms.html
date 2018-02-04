@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -21,7 +22,6 @@
 				<td>
 					<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('RC#roomDetails').arg(0,room.roomID)).build()}">details</a>
 					<a role="button" class="btn btn-primary" href="#" th:href="${(#mvc.url('RC#roomDetails').arg(0,room.roomID)).build()}">edit</a>
-					<a role="button" class="btn btn-primary"  href="#" th:href="${(#mvc.url('RC#userInRoom').arg(0,room.roomID)).build()}">users</a>
 					<a role="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-warning" href="#" th:href="${(#mvc.url('RC#roomDelete').arg(0,room.roomID)).build()}">delete</a>
 				</td>
 			</tr>
@@ -33,12 +33,16 @@
 	<div id="new" class="collapse">
 		<form class="form-style-4" role="form" th:object="${room}" th:action="${(#mvc.url('RC#newRoom')).build()}" method="post">
 			<div class="form-group">
-				<label for="room">Room:</label>
+				<label for="name">Name:</label>
 				<input type="text" class="form-control" th:field="*{name}"/>
 			</div>
 			<div class="form-group">
 				<label for="token">Token:</label>
 				<input type="text" class="form-control" th:field="*{token}"/>
+			</div>
+			<div class="form-group">
+				<label for="bleid">BLE:</label>
+				<input type="text" class="form-control" th:field="*{bleIds}"/>
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
@@ -49,4 +53,3 @@
 <script src="../js/popup.js"></script>
 </body>
 </html>
-

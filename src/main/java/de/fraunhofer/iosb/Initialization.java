@@ -64,7 +64,7 @@ public class Initialization  implements CommandLineRunner
         User userAdmin = new User("admin@fer.hr", "$2a$06$/TmUi.A5awl8wBaqkjbHtuInaEGn8ly4onEwPkK/dBy3YK6MXWebq", "Admin Admin", "admin@fer.hr", "0");
         userRepo.save(userAdmin);
 
-        User userAdmin1 = new User("admin1@fer.hr", "$2a$10$llq3McqZc.pfb3QRCUty0ulvB1J73n8h6gC85qV1EgWTgwMKFe0K2", "Viseslav Admin", "admin@fer.hr", "0");
+        User userAdmin1 = new User("admin1@fer.hr", "admin1", "Viseslav Admin", "admin@fer.hr", "0");
         userAdmin1.getFavorites().put(r22.getRoomID(), r22);
         userAdmin1.setToken("e67a3e52-24d8-44cc-bec7-5bd2371c55d9");
         userRepo.save(userAdmin1);
@@ -80,7 +80,7 @@ public class Initialization  implements CommandLineRunner
         userRepo.save(user22);
 
         Role roleAdmin = new Role();
-        roleAdmin.setRoom(r18);
+        roleAdmin.setRoom(all);
         roleAdmin.setRole("admin");
         roleAdmin.setUser(userAdmin1);
         roleRepo.save(roleAdmin);
@@ -91,14 +91,14 @@ public class Initialization  implements CommandLineRunner
         addUserForRoom(r18, "mario ", "kusek", "Mario Kušek", "mario.kusek@fer.hr", "6");
         addUserForRoom(r18, "marko", "pavelic", "Marko Pavelić", "marko.pavelic@fer.hr", "7");
 
-//        service = Constants.createService();
-//        Constants.deleteAll(service);
-//
-//        for(Room room : repoRoom.findAll())
-//        {
-//            addToSensorThingsServer(room);
-//            repoRoom.save(room);
-//        }
+        service = Constants.createService();
+        Constants.deleteAll(service);
+
+        for(Room room : repoRoom.findAll())
+        {
+            addToSensorThingsServer(room);
+            repoRoom.save(room);
+        }
     }
 
     private void addUserForRoom(Room room, String username, String password, String name, String email, String id) {
