@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly.swarm:javafx:2018.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.swarm/javafx/2018.1.0/c83b64151cbdd677f95937646ca3a94842af54c7/javafx-2018.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.swarm/javafx/2018.1.0/b9fd320519233203ad7d93b12d492a2de1c86e7f/javafx-2018.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

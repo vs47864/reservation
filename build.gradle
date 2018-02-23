@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
@@ -35,6 +36,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile group: 'org.wildfly.swarm', name: 'javafx', version: '2018.1.0'
+	compile(group: 'org.wildfly.swarm', name: 'javafx', version: '2018.1.0')
 	compile 'joda-time:joda-time:2.9.9'
 	runtime('com.h2database:h2')
 	//runtime('mysql:mysql-connector-java')

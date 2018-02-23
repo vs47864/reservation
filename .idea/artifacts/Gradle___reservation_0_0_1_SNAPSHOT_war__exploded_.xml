@@ -1,0 +1,126 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Gradle : reservation-0.0.1-SNAPSHOT.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/libs/exploded/reservation-0.0.1-SNAPSHOT.war</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$">
+        <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/reservation-0.0.1-SNAPSHOT.war/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="reservation_main/web/Web Gradle : reservation-0.0.1-SNAPSHOT.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="reservation_main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/out/production/resources" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: de.fraunhofer.iosb.ilt:SensorThingsClient:0.13" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-actuator:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-data-rest:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-devtools:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-hateoas:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-thymeleaf:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-security:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:javafx:2018.1.0" />
+          <element id="library" level="project" name="Gradle: joda-time:joda-time:2.9.9" />
+          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpclient:4.5.3" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.8.9" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
+          <element id="library" level="project" name="Gradle: com.h2database:h2:1.4.196" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.8.9" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9" />
+          <element id="library" level="project" name="Gradle: de.grundid.opendatalab:geojson-jackson:1.6" />
+          <element id="library" level="project" name="Gradle: org.threeten:threeten-extra:1.0" />
+          <element id="library" level="project" name="Gradle: io.jsonwebtoken:jjwt:0.7.0" />
+          <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-actuator:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.hibernate:hibernate-core:5.0.12.Final" />
+          <element id="library" level="project" name="Gradle: org.hibernate:hibernate-entitymanager:5.0.12.Final" />
+          <element id="library" level="project" name="Gradle: javax.transaction:javax.transaction-api:1.2" />
+          <element id="library" level="project" name="Gradle: org.springframework.data:spring-data-jpa:1.11.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aspects:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.data:spring-data-rest-webmvc:2.6.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.hateoas:spring-hateoas:0.23.0.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.thymeleaf:thymeleaf-spring4:2.1.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.hibernate:hibernate-validator:5.3.5.Final" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.security:spring-security-config:4.2.3.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.security:spring-security-web:4.2.3.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:container:2018.1.0" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:logging:2018.1.0" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:meta-spi:2018.1.0" />
+          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" />
+          <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.5.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.yaml:snakeyaml:1.17" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.aspectj:aspectjweaver:1.8.10" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-jdbc:8.5.16" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.jboss.logging:jboss-logging:3.3.1.Final" />
+          <element id="library" level="project" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
+          <element id="library" level="project" name="Gradle: org.javassist:javassist:3.21.0-GA" />
+          <element id="library" level="project" name="Gradle: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Gradle: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
+          <element id="library" level="project" name="Gradle: org.springframework.data:spring-data-commons:1.13.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-orm:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-tx:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.25" />
+          <element id="library" level="project" name="Gradle: org.springframework.data:spring-data-rest-core:2.6.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.thymeleaf:thymeleaf:2.1.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.codehaus.groovy:groovy:2.4.12" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.5.16" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat.embed:tomcat-embed-el:8.5.16" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.16" />
+          <element id="library" level="project" name="Gradle: javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="Gradle: com.fasterxml:classmate:1.3.3" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.10.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.security:spring-security-core:4.2.3.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:spi:2018.1.0" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:bootstrap:2018.1.0" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:config-api:1.2.0" />
+          <element id="library" level="project" name="Gradle: org.ow2.asm:asm:6.0" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0" />
+          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.11" />
+          <element id="library" level="project" name="Gradle: org.slf4j:jul-to-slf4j:1.7.25" />
+          <element id="library" level="project" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.25" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-juli:8.5.16" />
+          <element id="library" level="project" name="Gradle: org.atteo:evo-inflector:1.2.2" />
+          <element id="library" level="project" name="Gradle: ognl:ognl:3.0.8" />
+          <element id="library" level="project" name="Gradle: org.unbescape:unbescape:1.1.0.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap:shrinkwrap-api:1.2.6" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0" />
+          <element id="library" level="project" name="Gradle: org.jboss.modules:jboss-modules:1.6.0.Final" />
+          <element id="library" level="project" name="Gradle: org.wildfly.swarm:config-api-runtime:1.2.0" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0" />
+          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.11" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0" />
+          <element id="library" level="project" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0" />
+          <element id="library" level="project" name="Gradle: org.jboss:jandex:2.0.4.Final" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

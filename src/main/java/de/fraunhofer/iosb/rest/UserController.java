@@ -28,29 +28,21 @@ public class UserController
         return "users";
     }
 
-    @RequestMapping("/web/users/{id}")
+    @RequestMapping("/web/users/{id:.+}")
     public String userDetails(@PathVariable("id") String id, Model model)
     {
-        if(id.contains("@fer"))
-        {
-            id += ".hr";
-        }
-        if(id.contains("@iosb"))
-        {
-            id +=".de";
-        }
         User user = service.findUser(id);
         model.addAttribute("user", user);
         return "userDetails";
     }
 
-    @RequestMapping("/web/users/delete/{id}")
+    @RequestMapping("/web/users/delete/{id:.+}")
     public String userDelete(@PathVariable("id") String id, Model model)
     {
         service.delete(id);
         return "redirect:/web/users";
     }
-    @RequestMapping("/web/users/edit/{id}")
+    @RequestMapping("/web/users/edit/{id:.+}")
     public String userEdit(@PathVariable("id") String id, Model model)
     {
         User user = service.findUser(id);
@@ -58,7 +50,7 @@ public class UserController
         return "userForm";
     }
 
-    @RequestMapping(value = "/web/users/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/web/users/{id:.+}", method = RequestMethod.POST)
     public String userUpdate(@PathVariable("id") String id,User user)
     {
         if(!(user.getUsername().equals(id))){

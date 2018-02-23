@@ -24,11 +24,12 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-thymeleaf:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-security:1.5.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:javafx:2018.1.0" level="project" />
     <orderEntry type="library" name="Gradle: joda-time:joda-time:2.9.9" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.restdocs:spring-restdocs-mockmvc:1.1.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: com.jayway.jsonpath:json-path:2.2.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.h2database:h2:1.4.196" level="project" />
+    <orderEntry type="library" name="Gradle: com.jayway.jsonpath:json-path:2.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.5.3" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.8.9" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
@@ -61,6 +62,9 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-aop:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-config:4.2.3.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-web:4.2.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:container:2018.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:logging:2018.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:meta-spi:2018.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test-autoconfigure:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
@@ -85,7 +89,6 @@
     <orderEntry type="library" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.21.0-GA" level="project" />
     <orderEntry type="library" name="Gradle: antlr:antlr:2.7.7" level="project" />
-    <orderEntry type="library" name="Gradle: org.jboss:jandex:2.0.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-commons:1.13.6.RELEASE" level="project" />
@@ -103,6 +106,11 @@
     <orderEntry type="library" name="Gradle: com.fasterxml:classmate:1.3.3" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-core:4.2.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:spi:2018.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:bootstrap:2018.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:config-api:1.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm:6.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" name="Gradle: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" name="Gradle: javax.servlet:javax.servlet-api:3.1.0" level="project" />
@@ -114,8 +122,19 @@
     <orderEntry type="library" name="Gradle: org.atteo:evo-inflector:1.2.2" level="project" />
     <orderEntry type="library" name="Gradle: ognl:ognl:3.0.8" level="project" />
     <orderEntry type="library" name="Gradle: org.unbescape:unbescape:1.1.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.ow2.asm:asm:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap:shrinkwrap-api:1.2.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.modules:jboss-modules:1.6.0.Final" level="project" />
+    <orderEntry type="library" name="Gradle: org.wildfly.swarm:config-api-runtime:1.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.11" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jboss:jandex:2.0.4.Final" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="reservation_main" />
 </module>

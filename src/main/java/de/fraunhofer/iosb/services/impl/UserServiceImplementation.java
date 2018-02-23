@@ -12,6 +12,7 @@ import de.fraunhofer.iosb.representation.UserRepresentation;
 import de.fraunhofer.iosb.services.RoomService;
 import de.fraunhofer.iosb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -239,7 +240,11 @@ public class UserServiceImplementation implements UserService
     @Transactional
     public User save(User user) {
         if(repo.findByUsername(user.getUsername())==null)
+        {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             return repo.save(user);
+        }
         else
             throw new IllegalArgumentException("User with that username already exists");
     }

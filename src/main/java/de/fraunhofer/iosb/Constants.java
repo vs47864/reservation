@@ -21,7 +21,8 @@ import org.apache.http.impl.client.HttpClients;
  */
 public class Constants
 {
-    public static String BASE_URL = "http://localhost:8080/SensorThingsServer-v1.1/v1.0";
+    public static String BASE_URL = "http://localhost:8080/SensorThingsServer-1.1/v1.0";
+//    public static String BASE_URL = "https://intense-ocean-19482.herokuapp.com/";
     public static boolean USE_OPENID_CONNECT = false;
     public static boolean USE_BASIC_AUTH = false;
     public static String TOKEN_SERVER_URL = "http://localhost:8180/auth/realms/sensorThings/protocol/openid-connect/token";
